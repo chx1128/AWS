@@ -1,0 +1,81 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 25 Mar 2024, 6:32:38 pm
+    Author     : User
+*/
+
+body {
+    font-family: sans-serif;
+}
+
+#searchBox {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 0 0 10px lightgray;
+}
+
+h1 {
+    text-align: center;
+}
+
+#id{
+    width: 50%;
+    margin-right: 50px;
+}
+
+input[type="text"] {
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 10px;
+    gap: 5px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#sampleData{
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 0 0 10px lightgray;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 1px;
+    width: 100%;
+}
+
+th {
+    background-color: lightgray;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid lightgray;
+
+}
+
+

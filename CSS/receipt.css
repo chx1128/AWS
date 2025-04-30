@@ -1,0 +1,118 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 29 Mar 2024, 3:31:10 pm
+    Author     : User
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.receipt {
+    max-width: 520px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.receipt-navi{
+    max-width: 520px;
+    max-height: 100px;
+    background-color:#00032E;
+    top:0px;
+    text-align: center;
+}
+
+.receipt-logo{
+    width: auto;
+    height: 80px;
+    padding: 10px;
+}
+
+th{
+    border: 1px solid #ccc;
+    background-color: lightgray;
+    font-size: 1.2em;
+}
+
+th, td{
+    padding: 8px;
+}
+
+td{
+    margin-bottom: 5%;
+}
+
+.item{
+    width: 250px;
+}
+
+.quantity{
+    width: 100px;
+}
+
+.price{
+    width: 100px;
+}
+
+.totalPrice{
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.subDetails{
+    max-width: 520px;
+    max-height: 300px;
+    padding-top: -10px;
+    padding-bottom: -10px;
+    border-top: 1px solid #ccc;
+}
+
+p.subContent{
+    font-size: 1.2em;
+}
+
+.print-button {
+    display: block;
+    width: 200px;
+    padding: 10px;
+    margin: 2% 2%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.print-button:hover {
+    background-color: #0056b3;
+}
+
+/* Print receipt */
+@media print {
+    body {
+        background-color: white;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .navi{
+        display: none;
+    }
+
+    .receipt {
+        box-shadow: none;
+    }
+
+    .print-button {
+        display: none;
+    }
+}
+
