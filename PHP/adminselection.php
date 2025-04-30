@@ -13,7 +13,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 width:clamp(600px,100%,1550px);
                 margin:auto;
                 height:825px;
-                background-image:url('/Assignment/IMAGE/selectionbk.jpg');
+                background-image:url('../IMAGE/selectionbk.jpg');
                 background-repeat:no-repeat;
                 background-attachment: fixed;
                 background-size:100% 100%;

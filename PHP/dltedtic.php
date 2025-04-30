@@ -186,7 +186,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             
         echo"<form action='' method='post'>
             <div class='deletedticket$i'>
-            <img src='/Assignment/IMAGE/$deleteimgname[$i]' class='dlttkimg'/>
+            <img src='../IMAGE/$deleteimgname[$i]' class='dlttkimg'/>
             <div class='dltword'>
             <div class='dlttkid'><b>$deletetkid[$i]</b></div>
             <div class='dlttkname'>$deletetkname[$i]</div>

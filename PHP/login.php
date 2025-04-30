@@ -183,7 +183,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             .right{
                 width:350px;
                 height:650px;
-                background-image: url(/Assignment/IMAGE/rightbackground.png);
+                background-image: url(../IMAGE/rightbackground.png);
             }
             .leftimage{
                 width: 857px;
@@ -333,7 +333,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
         <div class="maindiv">
             <div class="left">
-                <img src="/Assignment/IMAGE/rollercoaster.jpg" class="leftimage"/>
+                <img src="../IMAGE/rollercoaster.jpg" class="leftimage"/>
 
                 <form action="" method="post" class="leftform" onsubmit="return login(event)">
                     <div class="logintitle"><h2 >LOG IN</h2></div>
@@ -367,7 +367,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <span class="personal"> personal details </span><br>And start journey with us 
                     </h4>
                 </div>
-                <img src="/Assignment/IMAGE/Screenshot_2024-03-06_224330-removebg-preview.png" class="rightimg"/>
+                <img src="../IMAGE/Screenshot_2024-03-06_224330-removebg-preview.png" class="rightimg"/>
             </div>
         </div>
         <script>

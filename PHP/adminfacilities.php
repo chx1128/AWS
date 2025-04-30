@@ -578,7 +578,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             echo "<form action='' method='post'>
                 <div class='wrap$i'>
                 <div class='facilityclass'>
-                <img src='/Assignment/IMAGE/$facimgname[$i]' class='facilities' />
+                <img src='../IMAGE/$facimgname[$i]' class='facilities' />
                     </div>
                     <div class='word'>
                     <div class='facilitiesword'><b>$facname[$i]</b></div>
@@ -757,7 +757,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class='editword' style='margin-top:-50px;'>
             Facilities Picture : <br/>
             </div>
-            <img src='/Assignment/IMAGE/$facimgname[$u]' class='facilityclass'/><br/>
+            <img src='../IMAGE/$facimgname[$u]' class='facilityclass'/><br/>
             <div class='editword'>
             Facility ID : $facid[$u]<br/><br/>
             </div>
@@ -967,7 +967,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <input type='button' id='closeaddbtn' value='X' onclick='closeaddpopup()'/>
                 <div class='newfacimg'>
                 Facilities Image : </br>
-                <img src='/Assignment/IMAGE/newpd.jpg' class='inputpic' id='inputpic' style='width:560px;height:300px;margin-top:10px;border-radius:25px;'/><br/>
+                <img src='../IMAGE/newpd.jpg' class='inputpic' id='inputpic' style='width:560px;height:300px;margin-top:10px;border-radius:25px;'/><br/>
                 <label for='inputbtn' style='background-color:#00032E;color:white;width:130px;height:25px;display:block;padding-top:3px;border-radius:10px;font-size:0.8em;margin-left:435px;margin-bottom:-30px;'>UPLOAD</label><br/>
                 <button type='button' class='cropbtn' onclick='firstratio()'>16:9</button>
                 <button type='button' class='cropbtn' onclick='secondratio()'>21:9</button>

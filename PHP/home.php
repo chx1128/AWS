@@ -162,7 +162,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
 
         <div class="homeabove">
-            <img src="/Assignment/IMAGE/homeabove(1)(1).png"/>
+            <img src="../IMAGE/homeabove(1)(1).png"/>
         </div>
         
         <div class="whatsup"><b>What's new? modify from enqi2</b></div>
@@ -184,7 +184,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 if($facstatus[$i]=='A'){
                 
                 echo "<div class='wrap'>
-                <img src='/Assignment/IMAGE/$facimgname[$i]' class='facilities'/>
+                <img src='../IMAGE/$facimgname[$i]' class='facilities'/>
                     <div class='word'>
                         <div class='facilitiesword'><b>$facname[$i]</b></div>
                     <div class='rate'><b>😱 $scare[$i]  🥰 $happy[$i]</b></div>
@@ -206,7 +206,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         <div class="chatbot">
-            <img src="/Assignment/IMAGE/chatbot.png" onclick="baudio.play()" style="cursor:pointer"/>
+            <img src="../IMAGE/chatbot.png" onclick="baudio.play()" style="cursor:pointer"/>
             <div class="word" style="
                  color: #B75151;
                  position:fixed;
@@ -223,7 +223,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script>
             
             const baudio = new Audio();
-            baudio.src = "/Assignment/soundeffect.mp4";
+            baudio.src = "../soundeffect.mp4";
         </script>
         <?php
         include("footer.php");

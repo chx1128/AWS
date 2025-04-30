@@ -195,7 +195,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         }
         echo"<div class='productdetails'>
         <div class='tknameword'><b id='ticketname'>{$ticketname[$y][$i]}</b></div><br/>
-        <img src='/Assignment/IMAGE/{$imagename[$y][$i]}' class='productimg' id='pdimg'/>
+        <img src='../IMAGE/{$imagename[$y][$i]}' class='productimg' id='pdimg'/>
         <div class='detailsword' style='padding:10px;'>
         <div class='cat' style='margin-bottom:25px;' id='catname'><b>Product Categories : </b><span style='margin-left:20px;'> {$catname[$y][$i]}</span></div>
         <div class='price' style='margin-bottom:5px;' ><b>Price<span style='margin-left:213px;'> :</span> </b><span style='margin-left:20px;'>RM {$ticketprice[$y][$i]}</span></div>

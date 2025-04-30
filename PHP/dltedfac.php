@@ -183,7 +183,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             
         echo"<form action='' method='post'>
             <div class='deletedfac$i'>
-            <img src='/Assignment/IMAGE/$deletedfacimgname[$i]' class='dltfacimg'/>
+            <img src='../IMAGE/$deletedfacimgname[$i]' class='dltfacimg'/>
             <div class='dltword'>
             <div class='dltfacid'><b>$deletedfacid[$i]</b></div>
             <div class='dltfacname'>$deletedfacname[$i]</div>

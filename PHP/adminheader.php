@@ -63,7 +63,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
              <div class="adminnavi">
             <div class="organame" >
-                <img src="/Assignment/IMAGE/adminnavname.png" class="adminnavname"/>
+                <img src="../IMAGE/adminnavname.png" class="adminnavname"/>
                 
             </div>
             <div class="navia" ><a href="adminfacilities.php"><b>FACILITIES</b></a></div>

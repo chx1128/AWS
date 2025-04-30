@@ -409,7 +409,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 if ($ticketstatus1[$x] == 'A') {
                     echo"<div class='ticketwrap' id='ticketwrap$x'>
             <form action='details.php' method='get'>
-            <img src='/Assignment/IMAGE/$imagename1[$x]' class='ticketclass' alt='Product details'/>
+            <img src='../IMAGE/$imagename1[$x]' class='ticketclass' alt='Product details'/>
             <div class='word'>
             <div class='wordclass'><b>$ticketname1[$x]</b></div>
             <div class='ticketprice' style='margin-top:3px;'>RM $ticketprice1[$x]</div>
@@ -449,7 +449,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 if ($ticketstatus2[$x] == 'A') {
                     echo"<div class='ticketwrap'>
             <form action='details.php' method='get'>
-            <img src='/Assignment/IMAGE/$imagename2[$x]' class='ticketclass' alt='Product details'/>
+            <img src='../IMAGE/$imagename2[$x]' class='ticketclass' alt='Product details'/>
             <div class='word'>
             <div class='wordclass'><b>$ticketname2[$x]</b></div>
             <div class='ticketprice' style='margin-top:3px;'>RM $ticketprice2[$x]</div>
@@ -490,7 +490,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 if ($ticketstatus3[$x] == 'A') {
                     echo"<div class='ticketwrap'>
             <form action='details.php' method='get'>
-            <img src='/Assignment/IMAGE/$imagename3[$x]' class='ticketclass' alt='Product details'/>
+            <img src='../IMAGE/$imagename3[$x]' class='ticketclass' alt='Product details'/>
             <div class='word'>
             <div class='wordclass'><b>$ticketname3[$x]</b></div>
             <div class='ticketprice' style='margin-top:3px;'>RM $ticketprice3[$x]</div>
@@ -512,7 +512,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
         </div>
 
         <div class="addtocart">
-            <img src="/Assignment/IMAGE/shopping-cart.png" class="cart" onclick="toadd()" id="toadd"/>
+            <img src="../IMAGE/shopping-cart.png" class="cart" onclick="toadd()" id="toadd"/>
         </div>
 
         <form action="payment-method.php" method="POST">
@@ -533,7 +533,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
                             // Display the item details
                             printf("
-                            <img src='/Assignment/IMAGE/$image'/><br>
+                            <img src='../IMAGE/$image'/><br>
                         <div class='cart-details'>
                             Ticket: <span style='color:white;'>$name<br></span>
                             Date: <span style='color:white;'>$date</span><br>

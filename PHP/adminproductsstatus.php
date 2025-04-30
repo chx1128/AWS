@@ -431,7 +431,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <head>
         <meta charset="UTF-8">
         <title>PRODUCT STATUS</title>
-        <link href="/Assignment/CSS/adminhome.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/adminhome.css" rel="stylesheet" type="text/css"/>
         <!--CSS-->
         <style>
             body{
@@ -722,7 +722,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             ";
 
     for ($x = 0; $x < $counter1; $x++) {
-    echo"<div class='ticketwrap'><form action='' method='post'><img src='/Assignment/IMAGE/$imagename1[$x]' class='ticketclass' name='imagename1'/>
+    echo"<div class='ticketwrap'><form action='' method='post'><img src='../IMAGE/$imagename1[$x]' class='ticketclass' name='imagename1'/>
                      <div class='word'>
                      <div class='wordclass' name='ticketname1'>$ticketname1[$x]</div>
                      <div class='ticketprice' style='margin-top:3px;' name='ticketprice1'>RM $ticketprice1[$x]</div>
@@ -746,7 +746,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>    
             ";
     for ($x = 0; $x < $counter2; $x++) {
-    echo"<div class='ticketwrap'><form action='' method='post'><img src='/Assignment/IMAGE/$imagename2[$x]' name='imagename2' class='ticketclass'/>
+    echo"<div class='ticketwrap'><form action='' method='post'><img src='../IMAGE/$imagename2[$x]' name='imagename2' class='ticketclass'/>
                      <div class='word'>
                      <div class='wordclass' name='ticketname2'>$ticketname2[$x]</div>
                      <div class='ticketprice' style='margin-top:3px;' name='ticketprice2'>RM $ticketprice2[$x]</div>
@@ -770,7 +770,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>    
             ";
     for ($x = 0; $x < $counter3; $x++) {
-    echo"<div class='ticketwrap'><form action='' method='post'><img src='/Assignment/IMAGE/$imagename3[$x]' name='imagename3' class='ticketclass'/>
+    echo"<div class='ticketwrap'><form action='' method='post'><img src='../IMAGE/$imagename3[$x]' name='imagename3' class='ticketclass'/>
                      <div class='word'>
                      <div class='wordclass' name='ticketname3'>$ticketname3[$x]</div>
                      <div class='ticketprice' style='margin-top:3px;' name='ticketprice3'>RM $ticketprice3[$x]</div>
@@ -952,7 +952,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <input type='button' class='editclosebtnn' value='X' onclick='closepopup()'/>
                 </div>
                 Product Picture : <br/>
-                <img src='/Assignment/IMAGE/$editimagename1[$i]' class='ticketclass'/><br/>
+                <img src='../IMAGE/$editimagename1[$i]' class='ticketclass'/><br/>
                 Product ID : <span class='editprodid' name='editprodid'>$editproductid1[$i]</span><br/><br/>
                 Product Name : $editticketname1[$i]<br/><br/>
                 Product Price : $editicketprice1[$i]<br/><br/>
@@ -990,7 +990,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <input type='button' class='editclosebtnn' value='X' onclick='closepopup()'/>
                 </div>
                 Product Picture : <br/>
-                <img src='/Assignment/IMAGE/$editimagename2[$i]' class='ticketclass'/><br/>
+                <img src='../IMAGE/$editimagename2[$i]' class='ticketclass'/><br/>
                 Product ID : <span class='editprodid' name='editprodid'>$editproductid2[$i]</span><br/><br/>
                 Product Name : $editticketname2[$i]<br/><br/>
                 Product Price : $editicketprice2[$i]<br/><br/>
@@ -1027,7 +1027,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <input type='button' class='editclosebtnn' value='X' onclick='closepopup()'/>
                 </div>
                 Product Picture : <br/>
-                <img src='/Assignment/IMAGE/$editimagename3[$i]' class='ticketclass'/><br/>
+                <img src='../IMAGE/$editimagename3[$i]' class='ticketclass'/><br/>
                 Product ID : <span class='editprodid' name='editprodid'>$editproductid3[$i]</span><br/><br/>
                 Product Name : $editticketname3[$i]<br/><br/>
                 Product Price : $editicketprice3[$i]<br/><br/>
@@ -1353,7 +1353,7 @@ if (isset($_POST["doneaddbtnn"])) {
         <form action='' method='post' enctype='multipart/form-data'>
         <input type='button' id='closeaddbtn' value='X' onclick='closeaddpopup()'/>
         Product Image : </br>
-        <img src='/Assignment/IMAGE/newpd.jpg' name='newprodimg' class='inputpic' id='inputpic' style='width:720px;height:225px;margin-top:10px;'/><br/>
+        <img src='../IMAGE/newpd.jpg' name='newprodimg' class='inputpic' id='inputpic' style='width:720px;height:225px;margin-top:10px;'/><br/>
         <label for='inputbtn' style='background-color:#00032E;color:white;width:130px;height:25px;display:block;padding-top:3px;border-radius:10px;font-size:0.8em;margin-left:435px;margin-bottom:-30px;'>UPLOAD</label><br/>
         <button type='button' class='cropbtn' onclick='firstratio()'>16:9</button>
         <button type='button' class='cropbtn' onclick='secondratio()'>21:9</button>

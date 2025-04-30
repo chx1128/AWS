@@ -100,7 +100,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
         <div class="navi">
             <div class="organame">
-                <img src="/Assignment/IMAGE/2ndduckylogo.png" class="duckylogo"/>
+                <img src="../IMAGE/2ndduckylogo.png" class="duckylogo"/>
                 
             </div>
             <div class="naviahold">
@@ -114,7 +114,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
 <!--              for duck icon on the bottom     -->
                 <div class="chatbot">
-            <img src="/Assignment/IMAGE/chatbot.png" onclick="baudio.play()" style="cursor:pointer"/>
+            <img src="../IMAGE/chatbot.png" onclick="baudio.play()" style="cursor:pointer"/>
             <div class="word" style="
                  color: #B75151;
                  position:fixed;
@@ -130,7 +130,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
         <script>
             const baudio = new Audio();
-            baudio.src = "/Assignment/soundeffect.mp4";
+            baudio.src = "../soundeffect.mp4";
         </script>
         
         <?php

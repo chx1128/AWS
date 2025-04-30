@@ -158,7 +158,7 @@ if (empty($_SESSION["payment"])) {
         ?>
         <div class="receipt">
             <div class="receipt-navi">
-                <img src="/Assignment/IMAGE/2ndduckylogo.png" class="receipt-logo"/>
+                <img src="../IMAGE/2ndduckylogo.png" class="receipt-logo"/>
             </div>
             <h2>Payment Receipt</h2>
             <div class="customer-info">

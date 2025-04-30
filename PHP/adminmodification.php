@@ -14,7 +14,7 @@
                max-width: 1200px;
                margin: 20px auto;
                padding: 20px;
-               background: url("/Assignment/IMAGE/duckbg.jpg");
+               background: url("../IMAGE/duckbg.jpg");
                border-radius: 10px;
                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                border-style: dotted;

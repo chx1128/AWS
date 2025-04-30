@@ -145,7 +145,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             .left{
                 width:380px;
                 height:650px;
-                background-image: url(/Assignment/IMAGE/leftbackground.png);
+                background-image: url(../IMAGE/leftbackground.png);
             }
             .leftcontent{
                 margin-top:100px;
@@ -256,7 +256,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
             <div class="right"></div>
-            <img src="/Assignment/IMAGE/skyworld.webp" class="rightbackground" />
+            <img src="../IMAGE/skyworld.webp" class="rightbackground" />
             
             <form action="<?php echo $webvalue ?>" method="post" class="rightform" id="signupForm">
                 <div class="signtitle"><h2 >- SIGN UP -</h2></div>

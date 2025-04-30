@@ -286,9 +286,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <input type="text" name="numtxt" id="cardNum" placeholder="0000 0000 0000 0000" maxlength="19" required autofocus
                            pattern="[0-9]{4}[ ][0-9]{4}[ ][0-9]{4}[ ][0-9]{4}" title="Please enter a valid 16-digit card number"/>
                     <p>We are currently accept
-                        <img src="/Assignment/IMAGE/visa-card.jpg" alt="Visa Card"/>
-                        <img src="/Assignment/IMAGE/mastercard.jpg" alt="Mastercard"/>
-                        <img src="/Assignment/IMAGE/paypal.jpg" alt="Paypal"/>
+                        <img src="../IMAGE/visa-card.jpg" alt="Visa Card"/>
+                        <img src="../IMAGE/mastercard.jpg" alt="Mastercard"/>
+                        <img src="../IMAGE/paypal.jpg" alt="Paypal"/>
                     </p>
                 </div>
 
