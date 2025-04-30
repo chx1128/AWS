@@ -165,7 +165,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <img src="/Assignment/IMAGE/homeabove(1)(1).png"/>
         </div>
         
-        <div class="whatsup"><b>What's new? modify from enqi</b></div>
+        <div class="whatsup"><b>What's new? modify from enqi2</b></div>
         <div class="facility">
             <?php
             for($i=0;$i<$counter;$i++) {
