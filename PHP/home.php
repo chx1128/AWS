@@ -162,7 +162,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
 
         <div class="homeabove">
-            <img src="/Assignment/IMAGE/homeabove(1)(1).png"/>
+            <img src="../IMAGE/homeabove(1)(1).png"/>
         </div>
         
         <div class="whatsup"><b>What's new? modify from hongxiang</b></div>
