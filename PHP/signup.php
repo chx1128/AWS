@@ -17,7 +17,7 @@ if (isset($_POST['submitbtn']))
     $phone = $_POST['phone'];
     $pass = $_POST['firstpass'];
     $cfmpass = $_POST['secondpass'];
-    $image = "";
+    $image = "unknownprofile.jpg";
 
     if (empty($_POST['email'])) {
         $emailerror = "Email is <b>Required</b>";
