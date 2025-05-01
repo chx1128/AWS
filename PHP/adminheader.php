@@ -65,7 +65,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
         <div class="adminnavi">
             <div class="organame" >
-                <img src="https://tarumtbucket2305835.s3.amazonaws.com/Wo'eY Logo(Black).png" class="adminnavname" />
+                <img src="../IMAGE/Wo'eY Logo(Black).png" class="adminnavname" />
 
             </div>
             <div class="navia" ><a href="../PHP/adminsearch.php"><b>TRANSACTION</b></a></div>

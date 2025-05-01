@@ -284,7 +284,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     echo "<label for='check_{$checkboxID}'>";
                     echo "<div class='productContainer'>";
                     echo "<div class='imagePart'>";
-                    echo "<img src='https://tarumtbucket2305835.s3.amazonaws.com/{$_SESSION["cart"][$key]["Image"]}' style='background-color:rgba(240,240,240,0.4);'>";
+                    echo "<img src='../IMAGE/{$_SESSION["cart"][$key]["Image"]}' style='background-color:rgba(240,240,240,0.4);'>";
                     echo "</div>";
                     echo "<div class='detailsPart'>";
                     echo "<div class='detailsInner'>";

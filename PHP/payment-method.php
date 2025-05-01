@@ -162,15 +162,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="form-group">
                     <input type="radio" id="creditCard" name="paymentMethod" value="creditCard" checked>
                     <label for="creditCard">Credit/Debit Card</label>
-                    <img src="https://tarumtbucket2305835.s3.amazonaws.com/visa-card.jpg" alt="Visa Card"/>
-                    <img src="https://tarumtbucket2305835.s3.amazonaws.com/mastercard.jpg" alt="Mastercard"/>
-                    <img src="https://tarumtbucket2305835.s3.amazonaws.com/paypal.jpg" alt="Paypal"/>
+                    <img src="../IMAGE/visa-card.jpg" alt="Visa Card"/>
+                    <img src="../IMAGE/mastercard.jpg" alt="Mastercard"/>
+                    <img src="../IMAGE/paypal.jpg" alt="Paypal"/>
                 </div>
                 <br/>
                 <div class="form-group">
                     <input type="radio" id="eWallet" name="paymentMethod" value="eWallet">
                     <label for="eWallet">E-Wallet</label>
-                    <img src="https://tarumtbucket2305835.s3.amazonaws.com/tng.jpg" alt="TnG"/>
+                    <img src="../IMAGE/tng.jpg" alt="TnG"/>
                 </div>
                 <div class="btn">
                     <input type="submit" value="Proceed" class="btnProceed" name="btnProceed"/>
