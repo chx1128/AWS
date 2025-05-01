@@ -17,6 +17,7 @@ if (isset($_POST['submitbtn']))
     $phone = $_POST['phone'];
     $pass = $_POST['firstpass'];
     $cfmpass = $_POST['secondpass'];
+    $image = "";
 
     if (empty($_POST['email'])) {
         $emailerror = "Email is <b>Required</b>";
@@ -44,6 +45,52 @@ if (isset($_POST['submitbtn']))
     } else if ($cfmpass != $pass) {
         $cfmpasserror = "<b>Password dint match</b>";
     }
+    //connect database
+        $con = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+        //check connection
+        if ($con->connect_error) {
+            die("connection failed: " .$con->connect_error);
+        }
+        //write query
+        $checkEmailSql = "SELECT user_email FROM client WHERE user_email = ?";
+        $emailCheckStmt = $con->prepare($checkEmailSql);
+        $emailCheckStmt->bind_param("s", $email);
+        $emailCheckStmt->execute();
+        $emailCheckStmt->store_result();
+
+        if ($emailCheckStmt->num_rows > 0) {
+            // Email already exists
+            $emailerror = "Error: Email already registered.";
+        } else {
+            // Step 2: Generate new user_id
+            $sql3 = "SELECT user_id FROM client ORDER BY CAST(SUBSTRING(user_id, 2) AS UNSIGNED) DESC LIMIT 1;";
+            $result = mysqli_query($con, $sql3);
+
+            if ($row = mysqli_fetch_assoc($result)) {
+                $latestUserId = $row['user_id'];
+                $number = (int)substr($latestUserId, 1);
+                $nextNumber = $number + 1;
+                $nextUserId = 'U' . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+            } else {
+                $nextUserId = "U0001";
+            }
+
+            // Step 3: Insert new user
+            $sql = "INSERT INTO client (user_id, name, user_email, user_pass, phone, personal_img, register_date) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $con->prepare($sql);
+
+            $hpass = hash('sha256', $pass);
+            $regisDate = date('Y-m-d');
+
+            $stmt->bind_param("sssssss", $nextUserId, $username, $email, $hpass, $phone, $image, $regisDate);
+            $stmt->execute();
+
+
+            $stmt->close();
+        }
+
+        $emailCheckStmt->close();
     if ($usernameerror == "" && $emailerror == "" && $phoneerror == "" && $passerror == "" && $cfmpasserror == "") {
         echo "<script>localStorage.pass='$cfmpass';</script>";
         echo "<script>localStorage.username='$username';</script>";
@@ -52,63 +99,8 @@ if (isset($_POST['submitbtn']))
         $webvalue = "../PHP/login.php";
         $signvalue="All information is valid,click log in to register your account";
         $continue = "Log in";
-        $iamge="unknownprofile.jpg";
-        //connect database
-        $con = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
-        //check connection
-        if ($con->connect_error) {
-            die("connection failed: " .$con->connect_error);
-        }
-        //write query
-        $sql="Insert into client (name,user_email,user_pass,phone,personal_img,register_date) values (?,?,?,?,?,?)";
-        //update user_id from client table
-        //null -> lastest id
-        //firstly use Lpad,which sub the character u want into a string with given length
-        //for example Lpad('abc',5,'o') -> the output will be 'ooabc'
-        //inside Lpad,since we need to do imcrement so use cast to extract the string become integer (ad unsigned)
-        //inside cast,before turn into integer,need to take the value
-        //in this case we use substring due to we only want the integer ,not the character
-        //substring=(value,2)mean i take a value ,and only want the value from the second character
-        //we select the lastest user_id by order by it with desencding order and only take one value with limit 1,
-        //after cast ,the value become integer so we plus one to avoid redundancy data
-        //so it become Lpad(value we get,4,'0')
-        //and lastly ,use concat to combine it with character u,make it become a user_id
-        //update the user_id when the name equal to the name just register
-        //
-        //summary
-        //cast(value as unsigned) ->turn value into integer
-        //substring(value,2) ->get the value start from second character
-        //Lpad(value,4,'0')->get the value and check length ,if not enough addin '0'
-        //concat('u',value)->join value with character 'u'
-        $sql2="Update client set 
-               user_id = concat('U',LPAD(cast(substring((SELECT user_id FROM client where user_id is not null ORDER BY user_id DESC LIMIT 1 ),2) as unsigned)+1,4,'0'))
-               where name=? limit 1;";
-        //process sql
-        //noted : con-> preprare use when there is ? in sql
-        //noted : con-> query use when there is no ? in sql 
-        //echo $sql2;
-        $stmt2=$con->prepare($sql2);
-        $stmt=$con->prepare($sql);
-        $hpass=hash('sha256',$pass);
-        $regisDate = date('Y-m-d');
-        //pass parameter into it
-        $stmt->bind_param("ssssss",$username,$email,$hpass,$phone,$iamge,$regisDate);
-        $stmt2->bind_param("s",$username);
+        $image="unknownprofile.jpg";
         
-        $stmt->execute();
-        $stmt2->execute();
-       
-        
-        if ($stmt->affected_rows > 0) {
-        }
-        else{echo "fail....";}
-        if ($stmt2->affected_rows > 0) {
-        }
-        else{echo "fail2....";}
-        
-        $con->close();
-        $stmt->close();
-        $stmt2->close();
     }
 } else {
     $webvalue = "";

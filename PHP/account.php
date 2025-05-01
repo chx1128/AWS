@@ -402,7 +402,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <div class="part1container">
             <div class="part1left">
                 <div class="imagewrap">
-                    <img src="<?php echo "https://tarumtbucket2305835.s3.amazonaws.com/$image"; ?>" class="userimage"/>
+                    <img src="<?php echo "../uploads/$image"; ?>" class="userimage"/>
                 </div>
             </div>
             <div class="part1right">
