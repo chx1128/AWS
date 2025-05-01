@@ -1,11 +1,14 @@
 <?php
 session_start();
 
-
+if(!isset($_SESSION['checkout'])){
+    echo "<script>location='../PHP/products.php'</script>";
+}
+    
 foreach ($_SESSION['checkout'] as $checkoutItem) {
     foreach ($_SESSION['cart'] as $index => $cartItem) {
-        $checkoutID = $checkoutItem['hiddenID'] . $checkoutItem['Date'];
-        $cartID = $cartItem['hiddenID'] . $cartItem['Date'];
+        $checkoutID = $checkoutItem['hiddenID'];
+        $cartID = $cartItem['hiddenID'];
 
         if ($checkoutID === $cartID) {
             unset($_SESSION['cart'][$index]);
@@ -18,7 +21,7 @@ $_SESSION['cart'] = array_values($_SESSION['cart']);
 unset($_SESSION["checkout"]);
 
 if (empty($_SESSION["payment"])) {
-    echo "<script>location='products.php'</script>";
+    echo "<script>location='../PHP/products.php'</script>";
 }
 ?>
 
@@ -168,7 +171,7 @@ if (empty($_SESSION["payment"])) {
         require_once '../secret/helper.php';
         ?>
         <?php
-        include('header.php');
+        include('../PHP/header.php');
         ?>
         <div class="receipt">
             <div class="receipt-navi">
@@ -205,14 +208,10 @@ if (empty($_SESSION["payment"])) {
                                     <td class='record'>%s</td> 
                                 </tr>
                                 <tr>
-                                    <td>Date: </td>
-                                    <td class='record'>%s</td> 
-                                </tr>
-                                <tr>
                                     <td>Time: </td>
                                     <td class='record'>%s</td> 
                                 </tr>
-                                ", $payment["user_id"], $payment["name"], $payment["date"], $payment["time"]);
+                                ", $payment["user_id"], $payment["name"], $payment["time"]);
                         } else {
                             echo "Payment record not found.";
                         }
@@ -233,14 +232,14 @@ if (empty($_SESSION["payment"])) {
                     <tr>
                         <th>Ticket Name</th>
                         <th>Quantity</th>
-                        <th>Book Date</th>
                         <th>Price (RM)</th>
+                        <th>Total (RM)</th>
                     </tr>
                     <?php
                     $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
                     $sql = "SELECT ticket_name, ticket_amount, book_date, price, total_price
-                          FROM Payment
+                          FROM payment
                           WHERE payment_id = ?";
 
                     $stmt = $con->prepare($sql);
@@ -263,10 +262,10 @@ if (empty($_SESSION["payment"])) {
                         <tr>
                             <td style='text-align:left;'>%s</td>
                             <td>%s</td>
-                            <td>%s</td>
+                            <td>%.2f</td>
                             <td>%.2f</td>
                         </tr>
-                        ", $name[$i], $qty[$i], $book_date[$i], $price[$i]);
+                        ", $name[$i], $qty[$i], $price[$i],$price[$i]*$qty[$i]  );
                         }
                     }
 
@@ -284,7 +283,7 @@ if (empty($_SESSION["payment"])) {
             </div>
 
             <input type="button" class="btnPrint" value="Print"/>
-            <input type="button" class="btnBack" value="Back" onclick="location = 'home.php'"/>
+            <input type="button" class="btnBack" value="Back" onclick="location = '../PHP/home.php'"/>
         </div>
     </body>
 

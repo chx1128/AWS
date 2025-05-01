@@ -14,14 +14,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         margin:auto;
         height: 90px;
         display: flex;
-        background-color:#00032E;
+        background-color:black;
         position:sticky;
         z-index:100;
         top:0px;
         }
         
         .organame {
-            background-color:#00032E;
+            background-color:black;
             color:yellow;
             width:350px;
             height:90px;
@@ -101,15 +101,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
         <div class="navi">
             <div class="organame">
-                <img src="../IMAGE/2ndduckylogo.png" class="duckylogo"/>
+                <img src="../IMAGE/Wo'eY Logo(White).png" class="duckylogo" style="width:220px;height:60px;margin-top: 15px;"/>
                 
             </div>
             <div class="naviahold">
-            <div class="navia" ><a href="home.php"><i class="fa-solid fa-house" style="position:absolute;font-size:0.8em;margin-left:-30px;margin-top:3.5px;opacity:75%;"></i>Home</a></div>
-            <div class="navia" style="margin-left:2px;"><a href="products.php"><i class="fa-solid fa-ticket" style="position:absolute;font-size:0.8em;margin-left:-32px;margin-top:3.5px;opacity:75%;"></i>Products</a></div>
-            <div class="navia" style="margin-left:2px;"><a href="cart.php"><i class="fa-solid fa-cart-shopping" style="position:absolute;font-size:0.8em;margin-left:-32px;margin-top:3.5px;opacity:75%;"></i>Cart</a></div>
-            <div class="navia" style="margin-left:7px;"><a href="account.php"><i class="fa-solid fa-circle-user" style="position:absolute;font-size:0.8em;margin-left:-27px;margin-top:3.5px;opacity:75%;"></i>Account</a></div>
-            <div class="navia" style="margin-left:32px;"><a href="memberships.php"><i class="fa-solid fa-gift" style="position:absolute;font-size:0.8em;margin-left:-28px;margin-top:3.5px;opacity:75%;"></i>Memberships</a></div>
+            <div class="navia" ><a href="../PHP/home.php"><i class="fa-solid fa-house" style="position:absolute;font-size:0.8em;margin-left:-30px;margin-top:3.5px;opacity:75%;"></i>Home</a></div>
+            <div class="navia" style="margin-left:2px;"><a href="../PHP/products.php"><i class="fa-solid fa-ticket" style="position:absolute;font-size:0.8em;margin-left:-32px;margin-top:3.5px;opacity:75%;"></i>Products</a></div>
+            <div class="navia" style="margin-left:2px;"><a href="../PHP/cart.php"><i class="fa-solid fa-cart-shopping" style="position:absolute;font-size:0.8em;margin-left:-32px;margin-top:3.5px;opacity:75%;"></i>Cart</a></div>
+            <div class="navia" style="margin-left:7px;"><a href="../PHP/account.php"><i class="fa-solid fa-circle-user" style="position:absolute;font-size:0.8em;margin-left:-27px;margin-top:3.5px;opacity:75%;"></i>Account</a></div>
+            <div class="navia" style="margin-left:32px;"><a href="../PHP/memberships.php"><i class="fa-solid fa-gift" style="position:absolute;font-size:0.8em;margin-left:-28px;margin-top:3.5px;opacity:75%;"></i>Memberships</a></div>
             </div>
         </div>
         

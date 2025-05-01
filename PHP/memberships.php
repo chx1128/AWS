@@ -6,7 +6,7 @@ if (isset($_COOKIE['id'])) {
 }else{
     echo "<script>
                     alert('Please login first');
-                    location='home.php'
+                    location='../PHP/home.php'
                   </script>";
 }
 
@@ -20,14 +20,14 @@ function checkSameMembershipID($user_id) {
 
     $users_id = $con->real_escape_string($user_id);
 
-    $sql = "SELECT * FROM Membership WHERE user_id = '$users_id'";
+    $sql = "SELECT * FROM membership WHERE user_id = '$users_id'";
 
     if ($result = $con->query($sql)) {
         if ($result->num_rows > 0) {
             // Same user_id detected
             echo "<script>
                     alert('You already have a membership.');
-                    location='home.php'
+                    location='../PHP/home.php'
                   </script>";
             $result->free();
             $con->close();
@@ -117,7 +117,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
             include('../PHP/header.php')
         ?>
-        <form class="form" action="sub-payment-method.php" method="post" id="form">
+        <form class="form" action="../PHP/sub-payment-method.php" method="post" id="form">
             <div class="title">
                 <h1>SUBSCRIBE NOW</h1>
             </div>
@@ -126,9 +126,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="detail">
                     <p>RM 200/year</p>
                     <p>
-                        - 🚗Free Parking <br/>  
-                        - ️🎫Buy 10 Get 1 Free <br/>
-                        - 🛣️Fast Lane Entrance <br/>
+                        - Product discount notification <br/>  
+                        - ️Get annual mystery gift <br/>
+                        - Faster delivery with no extra charged<br/>
                     </p>
                 </div>
                 <input type="submit" value="Subscribe" name="btnSubscribe" id="btnSubscribe"/>

@@ -173,10 +173,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
     <body>
         <?php
-        include("adminheader.php");
+        include("../PHP/adminheader.php");
         require_once '../secret/helper.php';
         ?>
-        <form action="" method="POST">
+        <form method="post" onsubmit="return confirmDelete();">
             <h1>Admin Membership Page</h1>
             <input type="submit" value="Delete Checked" name="btnDelete" class="deleteAll-btn"/>
 
@@ -192,7 +192,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     ?>
                     <th colspan="2">
                         <input type="button" value="Add Member" name="btnAdd" class="add-btn"
-                               onclick="window.location.href = 'admin-memberships.php?hddAdd=1'"/>
+                               onclick="window.location.href = '../PHP/admin-memberships.php?hddAdd=1'"/>
                     </th>
                 </tr>
 
@@ -215,7 +215,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_object()) {
                         printf("<tr>
-                        <td><input type='checkbox' name='chkDelete[]' value='%s' /></td>
+                        <td><input type='checkbox' name='checked[]' value='%s' /></td>
                         <td>%s</td>
                         <td>%s</td>
                         <td>%s</td>
@@ -226,12 +226,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td>%d</td>
 
                         <td>
-                            <a href='admin-memberships.php?editid=%s'>
+                            <a href='../PHP/admin-memberships.php?editid=%s'>
                                 <input type='button' name='btnEdit' class='edit-btn' value='Edit'/>
                             </a> 
                         </td>
                         <td>
-                        <a href='admin-memberships.php?deleteid=%s'>
+                        <a href='../PHP/admin-memberships.php?deleteid=%s'>
                             <input type='button' name='btnDelete' class='delete-btn' value='Delete'/>
                            </a>  
                         </td>
@@ -364,14 +364,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <input type="hidden" name="name" value="%s"/>
                         <input type = "submit" value = "Yes" name = "btnYes" />
                         <input type = "button" value = "Cancel" name = "btnCancel" id="cancelbtn"
-                        onclick="location=\'admin-memberships.php\'"/>
+                        onclick="location=\'../PHP/admin-memberships.php\'"/>
                         </div>
                         ', $id, $user_id, $name, $email, $phone, $dateJoin, $dateExp, $payment, $id, $name);
                         } else {
                             //record not found!
                             echo "<div class='error'>
                         Record Not Found, please try again. 
-                        <a href='admin-memberships.php'>[ Back ]</a>
+                        <a href='../PHP/admin-memberships.php'>[ Back ]</a>
                         </div>";
                         }
                     } else {
@@ -385,7 +385,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
                         //sql statement
-                        $sql = "DELETE FROM Membership WHERE membership_id = ?";
+                        $sql = "DELETE FROM membership WHERE membership_id = ?";
 
                         //ask connection to process sql
                         $stmt = $con->prepare($sql);
@@ -400,13 +400,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             //record deleted
                             printf("<div class='info'>
                             Member <b>%s</b>'s membership has been deleted.
-                            <a href='admin-memberships.php'>[ Back ]</a>
+                            <a href='../PHP/admin-memberships.php'>[ Back ]</a>
                             </div>", $name);
                         } else {
                             //unable to deleted
                             echo "<div class='error'>
                         Unable to delete.
-                        <a href='admin-memberships.php'>[ Back ]</a>
+                        <a href='../PHP/admin-memberships.php'>[ Back ]</a>
                           </div>";
                         }
                     }
@@ -466,7 +466,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         //record not found
                         echo "<div class='error'>
                                 Record Not Found, please try again. 
-                                <a href='admin-memberships.php'>[ Back ]</a>
+                                <a href='../PHP/admin-memberships.php'>[ Back ]</a>
                               </div>";
                     }
                     $result->free();
@@ -481,7 +481,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         echo "<ul class='error'>";
                         echo "<li>
                                 No such <b>User ID</b>.
-                                <a href='admin-memberships.php'>[ Back ]</a>
+                                <a href='../PHP/admin-memberships.php'>[ Back ]</a>
                               </li>";
                         echo "</ul>";
                         exit;
@@ -523,12 +523,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             //record updated
                             printf("<div class='info'>
                         Membership ID <b>%s</b> has been updated.
-                        <a href='admin-memberships.php'>[ Back ]</a>
+                        <a href='../PHP/admin-memberships.php'>[ Back ]</a>
                             </div>", $editid);
                         } else {
                             //unable to update
                             echo "<div class='error'>Database issues! Unable to update reocrd. </div>
-                                <a href='admin-memberships.php'>[ Back ]</a>
+                                <a href='../PHP/admin-memberships.php'>[ Back ]</a>
                             ";
                         }
                         $con->close();
@@ -611,7 +611,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <br/>
                     <div class="editBtns">
                         <input type="submit" value="Update" name="btnUpdate" />
-                        <input type="button" value="Cancel" name="btnCancel" onclick="location = 'admin-memberships.php'"/>
+                        <input type="button" value="Cancel" name="btnCancel" onclick="location = '../PHP/admin-memberships.php'"/>
                     </div>
                 </form>
             </div> 
@@ -621,53 +621,47 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <!-----------------------------Delete Checked----------------------------->
         <?php
-        //check if the user click the delete button??
-        if (isset($_POST["btnDelete"])) {
-            // YES, user clicked delete button
-            // retrieve checkbox
-            if (isset($_POST["chkDelete"])) {
-                $checked = $_POST["chkDelete"];
-            } else {
-                $checked = null;
-            }
+if (isset($_POST["btnDelete"])) {
+    // check if any checkbox was selected
+    if (isset($_POST["checked"]) && !empty($_POST["checked"])) {
+        $checked = $_POST["checked"];
 
-
-            // check if have any value in $checked
-            if (!empty($checked)) {
-                echo "<script>
-            if (confirm('This will delete all selected records. Are you sure you want to delete?')) {
-                document.querySelector('form').submit();
-            }
-                      </script>";
-                // at least 1 checkbox selected
-                $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-                // remove all special characters from id
-                $escaped = array();
-                foreach ($checked as $value) {
-                    $escaped[] = $con->real_escape_string($value);
-                }
-
-                $sql = "DELETE FROM Membership WHERE membership_id IN('" .
-                        implode("', '", $escaped) . "')";
-
-                if ($con->query($sql)) {
-                    printf("<div class='info'>
-                            <b>%d</b> record(s) has been deleted.
-                            </div>", $con->affected_rows);
-                }
-
-                $con->close();
-            }
+        $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        if ($con->connect_error) {
+            die("Connection failed: " . $con->connect_error);
         }
-        ?>
+
+        $escaped = array();
+        foreach ($checked as $value) {
+            $escaped[] = $con->real_escape_string($value);
+        }
+
+        $sql = "DELETE FROM membership WHERE membership_id IN('" . implode("','", $escaped) . "')";
+
+        if ($con->query($sql)) {
+    echo "<script>
+        alert('{$con->affected_rows} record(s) have been deleted.');
+        window.location.href = window.location.pathname;
+      </script>";
+}
+ else {
+            echo "<div class='error'>Error deleting records.</div>";
+        }
+
+        $con->close();
+    } else {
+        echo "<div class='error'>No records selected for deletion.</div>";
+    }
+}
+?>
+
 
         <!----------------------------- Add ----------------------------->
         <?php
 
         //fucntion to select the last membership_id from fatabase
         function getLastMembershipID($con) {
-            $sql = "SELECT membership_id FROM Membership ORDER BY membership_id DESC LIMIT 1";
+            $sql = "SELECT membership_id FROM membership ORDER BY membership_id DESC LIMIT 1";
             $result = $con->query($sql);
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
@@ -707,7 +701,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         echo "<ul class='error'>";
                         echo "<li>
                                 No such <b>User ID</b>.
-                                <a href='admin-memberships.php'>[ Back ]</a>
+                                <a href='../PHP/admin-memberships.php'>[ Back ]</a>
                               </li>";
                         echo "</ul>";
                         exit;
@@ -745,12 +739,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             //record inserted
                             printf("<div class='info'>
                                 Membership ID <b>%s</b> has been inserted.
-                                <a href='admin-memberships.php'>[ Back ]</a>
+                                <a href='../PHP/admin-memberships.php'>[ Back ]</a>
                             </div>", $nextMembershipID);
                         } else {
                             //record unable to insert due to DB error
                             echo "<div class='error'>Database issues! Unable to insert reocrd. </div>
-                                    <a href='admin-memberships.php'>[ Back ]</a>
+                                    <a href='../PHP/admin-memberships.php'>[ Back ]</a>
                         ";
                         }
                         $con->close();
@@ -805,7 +799,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <br/>
                     <div class="addBtns">
                         <input type="submit" value="Insert" name="btnInsert" />
-                        <input type="button" value="Cancel" name="btnCancel" onclick="location = 'admin-memberships.php'"/>
+                        <input type="button" value="Cancel" name="btnCancel" onclick="location = '../PHP/admin-memberships.php'"/>
                     </div>
                 </form>
             </div>
@@ -825,5 +819,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             // Set value of dateExp input field
             document.getElementById('dateExp').value = formattedDate;
         }
+        function confirmDelete() {
+    if (confirm("This will delete all selected records. Are you sure you want to delete?")) {
+        return true; // submit form
+    } else {
+        alert("Deletion cancelled.");
+        return false; // prevent form submission
+    }
+}
     </script>
 </html>

@@ -111,7 +111,7 @@ if (isset($_POST["logbtn"])) {
                 $totalSeconds = ($minutes * 60) + $seconds;
                 if ($totalSeconds <= 0 || $totalSeconds > 180) {
 
-                    echo "<script>location='login.php'</script>";
+                    echo "<script>location='../PHP/login.php'</script>";
 
                     $value1 = "00:00:00|0";
                     $sqlublock = "update client set block=? where user_email=?";
@@ -141,10 +141,10 @@ if (isset($_POST["logbtn"])) {
         setcookie('id', $id, time() + 7200, "/");
         echo "<script>alert('Login Sucessfull $id!');</script>";
         if ($id[0]=='U') {
-            echo "<script>location='products.php'</script>";
+            echo "<script>location='../PHP/products.php'</script>";
         }
         else{
-            echo "<script>location='adminsearch.php'</script>";
+            echo "<script>location='../PHP/adminsearch.php'</script>";
         }
     }
 } else {
@@ -166,6 +166,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         crossorigin="anonymous"></script>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+            *{
+                margin: 0px;
+                padding:0px;
+            }
             .maindiv{
                 width:1200px;
                 height: 650px;
@@ -206,7 +210,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 height: 90px;
                 border-radius: 50px;
                 background-color: rgba(6, 6, 6, 0.79);
-                padding-bottom: 15px;
+                margin-bottom: 20px;
             }
             .logintitle h2{
                 font-size: 2.5em;
@@ -214,6 +218,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 float: right;
                 padding-right: 40px;
                 padding-bottom: 20px;
+                margin-top:20px;
             }
             .name,.pass{
                 clear: both;
@@ -333,7 +338,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
         <?php
-        include('header.php');
+        include('../PHP/header.php');
         ?>
         <div class="maindiv">
             <div class="left">
@@ -364,7 +369,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
             <div class="right">
-                <a href="signup.php"><button class="regbtn" >Register</button></a>
+                <a href="../PHP/signup.php"><button class="regbtn" >Register</button></a>
 
                 <div class="regp1" id="regp1">
                     <h4 class="regp1_1">Enter your <br>

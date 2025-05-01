@@ -9,7 +9,7 @@ $id = "";
 ?>
 <?php
 if (empty($_COOKIE['id'])) {
-    echo "<script>location='login.php';</script>";
+    echo "<script>location='../PHP/login.php';</script>";
 }
 if (isset($_COOKIE['id'])) {
     $id = $_COOKIE['id'];
@@ -52,7 +52,7 @@ if (isset($_POST['logout'])) {
     session_destroy();
 
     // Redirect to login page
-    header("Location: login.php");
+    header("Location: ../PHP/login.php");
     exit;
 }
 
@@ -67,8 +67,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <meta charset="UTF-8">
         <title>Account</title>
         <style>
+            html{
+                max-width: 1550px;
+                margin:auto;
+            }
             body {
-                width: 1470px;
                 justify-content: center;
                 align-items: center;
                 margin:auto;
@@ -81,6 +84,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 position: relative;
                 justify-content: center;
                 background-color:rgb(237, 240, 245);
+                margin:auto;
             }
             .part1left{
                 width:380px;
@@ -393,7 +397,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
         <?php
-        include('header.php');
+        include('../PHP/header.php');
         ?>
         <div class="part1container">
             <div class="part1left">
@@ -411,7 +415,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <h2>Date of birth :</h2><input type="text" disabled value="<?php echo $userDOB; ?>" class="info2" id="date"/><br>
                     </form>
                     <h3>Account create date : </h3><span style="margin-left:0px;" id="createdate"><?php echo $userregisDate; ?></span>
-                    <a href="editprofile.php" style="margin-left:300px;margin-top: 30px;position:absolute;">Edit profile</a>
+                    <a href="../PHP/editprofile.php" style="margin-left:300px;margin-top: 30px;position:absolute;">Edit profile</a>
                     <form method="post" id="logoutForm">
                         <input type="hidden" name="logout" value="1">
                         <button type="button" class="extrabutton" name="logout" value="logout" onclick="confirmLogout()">Logout</button>
@@ -433,7 +437,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <?php
                         $counter = 0;
                         echo "<tr style='background-color:rgb(128, 124, 124);height:20px;'>
-                                 <th>TransactionId</th><th>DATE</th><th>Ticket</th><th>PRICE<br>(RM)</th><th>TICKET AMOUNT</th><th>Total PRICE<br>(RM)</th><th>FEEDBACK</th></tr>";
+                                 <th>TransactionId</th><th>Ticket</th><th>PRICE<br>(RM)</th><th>TICKET AMOUNT</th><th>Total PRICE<br>(RM)</th><th>FEEDBACK</th></tr>";
 
                         $sqlshow = "select payment_id,ticket_name,ticket_amount,book_date,price,total_price from payment where user_id = '$id'" ;
                         $resultshow = $con->query($sqlshow);
@@ -441,7 +445,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             while ($row = $resultshow->fetch_object()) {
                                 $ticketname = explode("|", $row->ticket_name);
                                 $ticketqty = explode("|", $row->ticket_amount);
-                                $bookdate = explode("|", $row->book_date);
                                 $price = explode("|", $row->price);
                                 $pID=$row->payment_id;
                                 for ($i = 0; $i < 100; $i++) {
@@ -451,18 +454,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         } else {
                                             $color = "rgb(237, 237, 235)";
                                         }
-                                        $currentdate = new DateTime();
-                                        $formatted_date = $currentdate->format('Y-m-d');
-                                        if ($formatted_date < $bookdate[$i]) {
-                                            $cdate[$counter] = $bookdate[$i];
-                                            $cname[$counter] = $ticketname[$i];
-                                            $cqty[$counter] = $ticketqty[$i];
-                                            $cprice[$counter] = $price[$i]; 
-                                            $paymentID[$counter] =$pID;
-                                            $counter++;
-                                        } else {
+                                     
                                             printf("<tr style='background-color:%s'>
-                                   <td>%s</td>
                                    <td>%s</td>
                                        <td>%s</td>
                                        <td>%s</td>
@@ -471,13 +464,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                       <td><button type='button' class='feedbackbtn' onclick='comment(\"%s,%s\")'>FEEDBACK</button></td>
                                       </tr>", $color
                                                     , $row->payment_id
-                                                    , $bookdate[$i]
                                                     , $ticketname[$i]
                                                     , $price[$i]
                                                     , $ticketqty[$i]
-                                                    , $price[$i]
+                                                    , $price[$i]*$ticketqty[$i]
                                                     , $ticketname[$i],$row->payment_id);
-                                        }
+                                            
                                     }
                                 }
                             }
@@ -499,108 +491,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         ?>
                     </table>
                 </fieldset>
-            </div>
-
-            <div class="currentbox">
-                <fieldset>
-                    <legend>Current transaction</legend>
-
-                    <form action="" method="post" class="currentform">
-                        <div class="listdown">
-                            <ul class="first">
-                                <li class="dote" i="dote" onclick="dropdown()">...</li>
-                                <ul class="drop" id="drop">
-                                    <li onclick="appeal()">Modification</li>
-                                    <li onclick="cancel()">Cancellation</li>
-                                </ul>
-                            </ul>
-                        </div>
-                        <input type="hidden" value="<?php echo $displayID ?>"  />
-                        Date:<input type="date" disabled  value="<?php echo $displaydate; ?>" style="margin-left:122px;color:black;"/><br>
-                        Ticket Name:<input type="text" disabled  value="<?php echo $displayname; ?>" style="margin-left: 49px;color:black;"/><br>
-                        Ticket Quantity:<input type="text" disabled  value="<?php echo $displayqty ?>"/><br>
-                        <p class="currentprice" ><?php echo "RM $displayprice"; ?></p>
-<?php
-$power = 0;
-echo "<div style='margin-bottom:200px;'>";
-foreach ($cdate as $key) {
-    echo "<button name='powerbtn$power' type='submit' class='currentselect'>";
-    echo "[ $cname[$power] - $cdate[$power] ]";
-    echo "</button>";
-    $power++;
-}
-echo "</div>";
-?>
-                    </form>
-                </fieldset>
-                <div class="wrap" >
-                    <div class="currentappeal" id="currentappeal">
-                        <form action=""method="post">
-                            <input type="hidden" value="<?php echo $displayID ?>" name="oriID" />
-                            <input type="hidden"  name="oridate" value="<?php echo $displaydate; ?>" />
-                            <input type="hidden"  name="oriname" value="<?php echo $displayname; ?>" />
-                            <input type="hidden"  name="oriqty" value="<?php echo $displayqty ?>"/><br>
-                            <input type="hidden"  name="oriprice" value="<?php echo $displayprice ?>"/>
-                            Date:<input type="date" name="newdate"/><br>
-                            Ticket Quantity:<input type="number" min="1" style="width:30px;" name="newqty"/>
-                            
-                            <button type="submit" name="appealbtn"  class="appealbtn" >Appeal</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="wrap" style="position:absolute;">
-                    <div class="currentreason" id="currentreason" >
-                        <form action=""method="post" style="margin-left: 30px;">
-                            <input type="hidden" value="<?php echo $displayID ?>" name="oriID" />
-                            <input type="hidden"  name="oridate" value="<?php echo $displaydate; ?>" />
-                            <input type="hidden"  name="oriname" value="<?php echo $displayname; ?>" />
-                            <input type="hidden"  name="oriqty" value="<?php echo $displayqty ?>"/><br>
-                            <input type="hidden"  name="oriprice" value="<?php echo $displayprice ?>"/>
-                            Reason:<input type="text" name="reason" style="width:180px;height:50px;"/>
-                            <button type="submit" name="cancelsubbtn"style="margin-top: 15px;" class="appealbtn" >submit</button>
-                        </form>
-                    </div>
-                </div>
-                <?php  
-                if(isset($_POST['appealbtn']))
-                {
-                    $oriID=$_POST['oriID'];
-                    $oridate=$_POST['oridate'];
-                    $oriname=$_POST['oriname'];
-                    $oriqty=$_POST['oriqty'];
-                    $oriprice=$_POST['oriprice'];
-                    $newdate=$_POST['newdate'];
-                    $newqty=$_POST['newqty'];
-                    $newprice=($oriprice/$oriqty) * $newqty;
-                    
-                    
-                    $sqlmodi="insert into modification (payment_id,ticketname,date,ticketqty,price,new_date,new_ticketqty,new_price) values (?,?,?,?,?,?,?,?)";
-                    $stmtmodi=$con->prepare($sqlmodi);
-                    $stmtmodi->bind_param('sssidsid', $oriID,$oriname,$oridate,$oriqty,$oriprice,$newdate,$newqty,$newprice);
-                    $stmtmodi->execute();
-                    echo "<script>alert('Modification request has been submitted, please wait for approval.');</script>";
-                    echo "<script>document.getElementById('currentappeal').style.marginLeft = '260px';</script>";
-                }
-                ?>
-                <?php  
-                if(isset($_POST['cancelsubbtn']))
-                {
-                    $oriID=$_POST['oriID'];
-                    $oridate=$_POST['oridate'];
-                    $oriname=$_POST['oriname'];
-                    $oriqty=$_POST['oriqty'];
-                    $oriprice=$_POST['oriprice'];
-                    $reason=$_POST['reason'];
-                    
-                    
-                    $sqlcancel="insert into cancellation (payment_id,ticket_name,date,ticket_amount,price,reason) values(?,?,?,?,?,?)";
-                    $stmtcancel=$con->prepare($sqlcancel);
-                    $stmtcancel->bind_param("sssids",$oriID,$oriname,$oridate,$oriqty,$oriprice,$reason);
-                    $stmtcancel->execute();
-
-                    echo "<script>alert('Cancellation request has been submitted, please wait for approval.');</script>";
-                }
-                ?>
             </div>
         </div>
         
@@ -645,11 +535,11 @@ echo "</div>";
 }
         function comment(category,id) {
             localStorage.ticket = category;
-            location = "feedback.php";
+            location = "../PHP/feedback.php";
         }
 
     </script>
         <?php
-        include("footer.php");
+        include("../PHP/footer.php");
         ?>
 </html>

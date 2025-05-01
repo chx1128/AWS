@@ -163,10 +163,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
             */
-            /* 
-                Created on : Mar 17, 2024, 7:59:22 AM
-                Author     : Admin
-            */
+            *{
+                margin: 0px;
+                padding:0px;
+            }
             header {
                 background-color: white;
                 width: 50px;
@@ -179,21 +179,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 margin:auto;
             }
             .categories{
-                width:1100px;
+                width:100%;
                 height:50px;
                 border:1px solid transparent;
-                margin-top:20px;
+                margin-top:60px;
                 margin-left:-60px;
-                margin-bottom:-25px;
-                font-family:Helvetica;
+                margin-bottom:-10px;
+                font-family:Raleway;
                 font-size:2.5em;
-                color:#EDCE81;
+                color:black ;
                 transition: transform 0.5s ease;
+                text-shadow: 4px 3px 2px rgba(0,0,0,0.16);
             }
 
             .ticket{
                 background-color:white;
-                width:1100px;
+                width:90%;
                 height:100%;
                 display:flex;
                 flex-wrap: wrap;
@@ -207,21 +208,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
             }
 
             .ticketwrap{
-                width:400px;
-                height:225px;
-                margin-bottom:0px;
-                margin-right:0px;
-                margin-top:-10px;
-                border:1px solid transparent;
-                border-radius:25px;
-                padding:50px;
+                width:300px;
+                height:400px;
+                border:2px solid rgba(200,200,200,0.5);
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                margin-top: 50px;
+                border-radius:8px;
+                padding-bottom:50px;
             }
 
             .ticketclass{
-                width:400px;
-                height:125px;
+                width:300px;
+                height:300px;
                 margin: 10px 0px;
-                border:1px solid transparent;
+                margin-top: 0px;
+                background-color:rgba(240,240,240,0.4);
             }
 
             .naviblur{
@@ -262,44 +263,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 transform:scale(1.1);
             }
 
-            .addtocart{
-                position:absolute;
-                margin-top:-1300px;
-                margin-left:1200px;
-                width:100px;
-                height:1000px;
-                border-radius:5px;
-                transition: transform 0.5s ease;
-                cursor: pointer;
-            }
-
-            .cart{
-                position:absolute;
-                margin-top:10px;
-                margin-left:100px;
-                width:50px;
-                height:50px;
-                padding:10px;
-                transition:0.5s linear;
-            }
-
-            .cart:hover{
-                filter:drop-shadow(#868686 0 0 0.75em);
-            }
-
-           
         </style>
     </head>
     <body>
         <?php
-        include('header.php');
+        include('../PHP/header.php');
         ?>
 
         <div class="ticket">
             <?php
-            echo"<div class='categories'>
+            echo"<div class='categories' style='margin-top:20px'>
             <div class='catclass1'>
-            <b style='text-decoration:none;'>SPOT ACCESS &nbsp
+            <b style='text-decoration:none;'>GRADUATION SHORTS &nbsp
             </b></div>
             </div>    
             ";
@@ -321,14 +296,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
                 if ($ticketstatus1[$x] == 'A') {
                     echo"<div class='ticketwrap' id='ticketwrap$x'>
-            <form action='details.php' method='get'>
+            <form action='../PHP/details.php' method='get'>
             <img src='../IMAGE/$imagename1[$x]' class='ticketclass' alt='Product details'/>
             <div class='word'>
             <div class='wordclass'><b>$ticketname1[$x]</b></div>
             <div class='ticketprice' style='margin-top:3px;'>RM $ticketprice1[$x]</div>
             <input type='hidden' name='ticketcat' value='$ticketcat1[$x]'/>
             <input type='hidden' name='index' value='$x'/>
-            <button name='submitbtn' type='submit' style='font-size:0.8em;margin-left:150px;' id='submitbtn' onclick='details($x)'>view details</button>
+            <button name='submitbtn' type='submit' style='font-size:0.8em;margin-left:100px;' id='submitbtn' onclick='details($x)'>view details</button>
             </form> 
             </div></div>
             ";
@@ -340,7 +315,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 //second cat products
             echo"<div class='categories'>
             <div class='catclass2'>
-            <b style='text-decoration:none;'>PACKAGE ACCESS &nbsp
+            <b style='text-decoration:none;'>GRADUATION JACKET &nbsp
             </b></div>
             </div>    
             ";
@@ -361,14 +336,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 echo"</script>";
                 if ($ticketstatus2[$x] == 'A') {
                     echo"<div class='ticketwrap'>
-            <form action='details.php' method='get'>
+            <form action='../PHP/details.php' method='get'>
             <img src='../IMAGE/$imagename2[$x]' class='ticketclass' alt='Product details'/>
             <div class='word'>
             <div class='wordclass'><b>$ticketname2[$x]</b></div>
             <div class='ticketprice' style='margin-top:3px;'>RM $ticketprice2[$x]</div>
             <input type='hidden' name='ticketcat' value='$ticketcat2[$x]'/>
             <input type='hidden' name='index' value='$x'/>
-            <button name='submitbtn' type='submit' style='font-size:0.8em;margin-left:150px;' id='submitbtn' onclick='details($x)'>view details</button>
+            <button name='submitbtn' type='submit' style='font-size:0.8em;margin-left:100px;' id='submitbtn' onclick='details($x)'>view details</button>
             </form> 
             </div></div>
             ";
@@ -380,7 +355,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 //third cat products
             echo"<div class='categories'>
             <div class='catclass3'>
-            <b style='text-decoration:none;'>INDIVIDUAL ACCESS &nbsp
+            <b style='text-decoration:none;'>GRADUATION TEE &nbsp
             </b></div>
             </div>    
             ";
@@ -402,14 +377,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
                 if ($ticketstatus3[$x] == 'A') {
                     echo"<div class='ticketwrap'>
-            <form action='details.php' method='get'>
+            <form action='../PHP/details.php' method='get'>
             <img src='../IMAGE/$imagename3[$x]' class='ticketclass' alt='Product details'/>
             <div class='word'>
             <div class='wordclass'><b>$ticketname3[$x]</b></div>
             <div class='ticketprice' style='margin-top:3px;'>RM $ticketprice3[$x]</div>
             <input type='hidden' name='ticketcat' value='$ticketcat3[$x]'/>
             <input type='hidden' name='index' value='$x'/>
-            <button name='submitbtn' type='submit' style='font-size:0.8em;margin-left:150px;' id='submitbtn' onclick='details($x)'>view details</button>
+            <button name='submitbtn' type='submit' style='font-size:0.8em;margin-left:100px;' id='submitbtn' onclick='details($x)'>view details</button>
             </form> 
             </div></div>
             ";
@@ -424,13 +399,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
         </div>
 
-        <div class="addtocart">
-            <img src="../IMAGE/shopping-cart.png" class="cart" onclick="toadd()" id="toadd"/>
-        </div>
-
         
         <?php
-        include("footer.php");
+        include("../PHP/footer.php");
         ?>
     </body>
 

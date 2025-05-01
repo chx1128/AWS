@@ -23,8 +23,7 @@ if (isset($_COOKIE['id']) && $_COOKIE['id'] !== 'Guest') {
             $merged = false;
             foreach ($_SESSION['cart'] as &$userItem) {
                 if (
-                    $userItem['hiddenID'] === $guestItem['hiddenID'] &&
-                    $userItem['Date'] === $guestItem['Date']
+                    $userItem['hiddenID'] === $guestItem['hiddenID'] 
                 ) {
                     $userItem['Qty'] += $guestItem['Qty'];
                     $merged = true;
@@ -58,12 +57,11 @@ if (isset($_COOKIE['id']) && $_COOKIE['id'] !== 'Guest') {
 }
 
 
-if (isset($_POST['hiddenID'], $_POST['date'])) {
+if (isset($_POST['hiddenID'])) {
     $id = $_POST['hiddenID'];
-    $date = $_POST['date'];
 
     foreach ($_SESSION['cart'] as $index => $item) {
-        if ($item['hiddenID'] === $id && $item['Date'] === $date) {
+        if ($item['hiddenID'] === $id ) {
             unset($_SESSION['cart'][$index]);
             $_SESSION['cart'] = array_values($_SESSION['cart']); // Reindex
             echo "Item removed.";
@@ -87,6 +85,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <meta charset="UTF-8">
         <title>Cart</title>
         <style>
+            *{
+                margin: 0px;
+                padding:0px;
+            }
             html{
                 max-width: 1550px;
                 margin:auto;
@@ -94,7 +96,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             .titlePart{
                 width: 90%;
                 margin:auto;
-                margin-top: 10px;
+                margin-top: 40px;
             }
             .titlePart h1{
                 font-size: 40px;
@@ -116,7 +118,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             .imagePart{
                 height: 300px;
                 width:300px;
-                border:1px solid black;
             }
             .detailsPart{
                 height: 300px;
@@ -124,12 +125,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             }
             .totalPricingPart{
                 height: 300px;
-                border:1px solid black;
                 width:150px;
             }
             img{
-                width:100%;
-                height:50%;
+                width:300px;
+                height:300px;
             }
             .detailsInner{
                 width:80%;
@@ -146,7 +146,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             }
             .titleDisplay{
                 display:flex;
-                margin-top: -20px;
+                margin-top: 20px;
             }
             .productH2{
                 width:84%;
@@ -180,6 +180,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 align-items: center;
                 width: 115px;
                 justify-content: space-between;
+                margin-top: 10px;
             }
             .functionalPart button{
                 height:30px;
@@ -262,27 +263,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
         <?php
-        include('header.php');
+        include('../PHP/header.php');
         ?>
         <div class="titlePart">
             <h1>Cart</h1>
+            <hr style="width:150px; margin-left: 0;margin-top:5px;">
             <div class="titleDisplay">
                 <h1 class="productH2">Product</h1>
                 <h1 class="totalH2">Total (RM)</h1>
             </div>
-            <hr style="margin-top: -5px;">
+            <hr style="margin-top: 10px;">
         </div>
         <div class="cartContainer">
-            <form action="payment-method.php" method="post">
+            <form action="../PHP/payment-method.php" method="post">
                 <?php
                 foreach ($_SESSION["cart"] as $key => $item) {
-                    $checkboxID = $_SESSION["cart"][$key]["hiddenID"] . $_SESSION["cart"][$key]["Date"];
+                    $checkboxID = $_SESSION["cart"][$key]["hiddenID"];
                     $value = $_SESSION["cart"][$key]["Price"] * $_SESSION["cart"][$key]["Qty"];
                     echo "<input type='checkbox' name='checkedItems[]' value='{$checkboxID}' class='checkClass' id='check_{$checkboxID}' onclick='saveChecked(\"{$checkboxID}\")'>";
                     echo "<label for='check_{$checkboxID}'>";
                     echo "<div class='productContainer'>";
                     echo "<div class='imagePart'>";
-                    echo "<img src='../IMAGE/{$_SESSION["cart"][$key]["Image"]}'>";
+                    echo "<img src='../IMAGE/{$_SESSION["cart"][$key]["Image"]}' style='background-color:rgba(240,240,240,0.4);'>";
                     echo "</div>";
                     echo "<div class='detailsPart'>";
                     echo "<div class='detailsInner'>";
@@ -296,12 +298,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     echo "<button class='functionButton' type='button' id='increase_{$checkboxID}'"
                     . " onclick='quantityAdjust(\"{$checkboxID}\", this.id, {$_SESSION["cart"][$key]["Price"]})' name='increase_quantity'>+</button>";
-                    echo "<button type='button' onclick=\"deleteCartItem('{$item['hiddenID']}', '{$item['Date']}')\" style=\"border:none;background:transparent;cursor:pointer;\">";
+                    echo "<button type='button' onclick=\"deleteCartItem('{$item['hiddenID']}')\" style=\"border:none;background:transparent;cursor:pointer;\">";
                     echo "<i class='fa-solid fa-trash' style='font-size:20px;color:black;'></i>";
                     echo "</button>";
                     echo "</div>";
-                    echo "<h2>{$_SESSION["cart"][$key]["Price"]}</h2>";
-                    echo "<h2>{$_SESSION["cart"][$key]["Date"]}</h2>";
                     echo "</div>";
                     echo "</div>";
                     echo "<div class='totalPricingPart'>";
@@ -311,7 +311,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     echo "</label>";
                 }
                 ?> 
-                <hr style="margin-top:50px;">
+                <hr style="margin-top:50px;margin-bottom: 15px;">
                 <div class="subtotalPart">
                     <h2 class="subtotalH2">Subtotal : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
                     <h2 class="amountH2" id="grandTotal" name="totalPrice">0.00</h2>
@@ -326,7 +326,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <div style="height:200px;"></div>
 
 <?php
-include("footer.php");
+include("../PHP/footer.php");
 ?>
         <div id="customAlert" style="display:none;" class="custom-alert">
             <p id="alertMessage"></p>
@@ -426,7 +426,7 @@ include("footer.php");
                 document.getElementById("grandTotal").innerText = total.toFixed(2);
                 sessionStorage.setItem("grandTotal", total.toFixed(2));
             };
-            function deleteCartItem(hiddenID, date) {
+            function deleteCartItem(hiddenID) {
                 if (!confirm("Are you sure you want to remove this item?"))
                     return;
 
@@ -435,7 +435,7 @@ include("footer.php");
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded"
                     },
-                    body: `hiddenID=${encodeURIComponent(hiddenID)}&date=${encodeURIComponent(date)}`
+                    body: `hiddenID=${encodeURIComponent(hiddenID)}`
                 })
                         .then(res => res.text())
                         .then(response => {

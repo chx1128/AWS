@@ -6,13 +6,13 @@ if (isset($_POST['checkedItems'])) {
             $user_id = $_COOKIE['id'];
         }
         else{
-            echo "<script>location='login.php'</script>";
+            echo "<script>location='../PHP/login.php'</script>";
         }
     $checked = $_POST['checkedItems']; // Array of checkboxID values
     $checkout = [];
 
     foreach ($_SESSION['cart'] as $item) {
-        $itemID = $item['hiddenID'] . $item['Date'];
+        $itemID = $item['hiddenID'];
         if (in_array($itemID, $checked)) {
             $checkout[] = $item;
         }
@@ -20,15 +20,11 @@ if (isset($_POST['checkedItems'])) {
 
     $_SESSION['checkout'] = $checkout;
 
-    // Optional: Debug output
-    echo "<pre>";
-    print_r($_SESSION['checkout']);
-    echo "</pre>";
+    // Optional: Debug outpu
 } else {
     if(!isset($_POST['btnProceed']))
-    echo "<script>location='products.php'</script>";
+    echo "<script>location='../PHP/products.php'</script>";
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +64,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             }
 
             .cart{
-                width: 46.5%;
+                width: 41%;
                 margin-bottom: 2%;
                 margin-left: -0.5%; 
             }
@@ -111,10 +107,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             tr:nth-child(odd){
                 background-color: #F2F2F2;
+                
             }
 
             th{
-                border: 1px solid white;
                 background-color: #BBBBBB;
                 font-size: 1.2em;
             }
@@ -178,7 +174,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div class="btn">
                     <input type="submit" value="Proceed" class="btnProceed" name="btnProceed"/>
-                    <input type="button" value="Cancel" class="btnCancel" onclick="location = 'products.php'"/>
+                    <input type="button" value="Cancel" class="btnCancel" onclick="location = '../PHP/products.php'"/>
                 </div>
             </fieldset>
             
@@ -189,9 +185,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     // Redirect the user based on the selected payment method
                     if ($selectedPaymentMethod == "creditCard") {
-                        echo "<script>location='credit-card.php'</script>";
+                        echo "<script>location='../PHP/credit-card.php'</script>";
                     } elseif ($selectedPaymentMethod == "eWallet") {
-                        echo "<script>location='tng.php'</script>";
+                        echo "<script>location='../PHP/tng.php'</script>";
                     }
                 }
             }
@@ -203,7 +199,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <table>
                         <tr>
                             <th>Ticket</th>
-                            <th>Date</th>
                             <th>Quantity</th>
                             <th>Price (RM)</th>
                             <th>Sub-total Price (RM)</th>
@@ -219,7 +214,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 $image = $value["Image"];
                                 $name = $value["Name"];
                                 $price = $value["Price"];
-                                $date = $value["Date"];
                                 $qty = $value["Qty"];
                                 
                                 $subtotalPrice = number_format($price * $qty, 2);
@@ -227,8 +221,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                                 echo "
                                     <tr>
-                                        <td>$name</td>
-                                        <td>$date</td>
+                                        <td >$name</td>
                                         <td style='text-align: right;'>$qty</td>
                                         <td style='text-align: right;'>$price</td>
                                         <td style='text-align: right;'>$subtotalPrice</td>
@@ -237,7 +230,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                             echo"
                                 <tr class='total'>
-                                    <td colspan='4'>Total Price: </td>
+                                    <td colspan='3'>Total Price: </td>
                                     <td style='text-align: right;'>$totalPrice</td>
                                 </tr>";
                         }

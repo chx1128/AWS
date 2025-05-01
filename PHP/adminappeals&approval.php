@@ -46,16 +46,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
         <?php
-        include('adminheader.php');
+        include('../PHP/adminheader.php');
         ?>
         
         <div class="button-ctn">
         <div class='ctn1'>
-        <a href='adminmodification.php' class='button1'>Modification</a>
+        <a href='../PHP/adminmodification.php' class='button1'>Modification</a>
         </div>
         
         <div class='ctn2'>
-        <a href='admincancellation.php' class='button2'>Cancellation</a>
+        <a href='../PHP/admincancellation.php' class='button2'>Cancellation</a>
         </div>
         </div>
         

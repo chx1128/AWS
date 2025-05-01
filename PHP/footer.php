@@ -80,7 +80,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <h1>Contact Us :</h1><br/>
                     <div class="footerword" style="margin-top:20px;">
                         <a href="048784896">📞: +048784896</a><br/><br/>
-                        <a href="wowduckyland@gmail.com">📧: wowduckyland@gmail.com </a><br/>
+                        <a href="mailto:woeyfashionapparel@gmail.com">📧: woeyfashionapparel@gmail.com </a><br/>
 
                     </div>
                 </div>

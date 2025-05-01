@@ -94,7 +94,7 @@ $header = array(
 </head>
 <body>
     <?php
-    include('adminheader.php');
+    include('../PHP/adminheader.php');
     require_once '../secret/helper.php';
     ?>
     <div id="searchBox">
@@ -114,11 +114,16 @@ $header = array(
     <table border="1" cellspacing="0" cellpadding="5">
         <thead>
             <tr>
-                <?php
-                foreach ($header as $key => $value) {
-                    echo "<th>$value</th>";
-                }
-                ?>
+                <th>Transaction ID</th>
+                <th>Order ID</th>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Date</th>
+                <th>Time</th>
             </tr>
         </thead>
         <tbody id="tableBody">
@@ -152,7 +157,7 @@ $header = array(
                 return false;
             }
 
-            xmlhttp.open("POST", "search.php", true);
+            xmlhttp.open("POST", "../PHP/search.php", true);
             xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -175,7 +180,7 @@ $header = array(
                 return false;
             }
             
-            xmlhttp.open("POST", "search.php", true);
+            xmlhttp.open("POST", "../PHP/search.php", true);
             xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {

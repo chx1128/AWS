@@ -164,7 +164,7 @@ $separator = implode(" | ", $filter);
     </style>
 </head>
 <body>
-    <?php include('adminheader.php'); ?>
+    <?php include('../PHP/adminheader.php'); ?>
     <div class="title">Customer Feedback</div>
     <div class='middle'>
     <p id='filter' class="filter">Filter: <?php echo $separator; ?></p>
@@ -201,8 +201,8 @@ if ($result->num_rows > 0) {
                 <div class='tname'>".$row['ticket_name']."</div>
             <div class='satisfaction'>
                 Products: ".$satlevel[$row['q1']]."<br>
-                Facilities: ".$satlevel[$row['q2']]."<br>    
-                Services: ".$satlevel[$row['q3']]."
+                Service: ".$satlevel[$row['q2']]."<br>    
+                Delivery: ".$satlevel[$row['q3']]."
             </div>
             <div class='date'>" . $row['date'] . "</div>
             <div class='comment'>" . $row['user_comment'] . "</div>
@@ -229,7 +229,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['feedback_id'])) {
         if ($stmt->execute()) {
             echo "<script>
                 document.getElementById('feedbox".$feedbackId."').remove();
-                location='adminfeedback.php';
+                location='../PHP/adminfeedback.php';
                   </script>";
         } else {
             echo "Error deleting feedback: " . $con->error;

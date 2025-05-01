@@ -13,7 +13,7 @@ session_start();
 
 // Check if redirected from a submit
 if (!isset($_GET["submitbtn"])) {
-    echo "<script>location='products.php'</script>";
+    echo "<script>location='../PHP/products.php'</script>";
     exit;
 }
 
@@ -115,33 +115,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <meta charset="UTF-8">
         <title></title>
         <style>
+            html{
+                height:100vh;
+            }
             .productdetails{
                 width:clamp(600px,1400px,1600px);
                 height:100%;
                 margin:auto;
+                display:flex;
             }
 
             .tknameword b{
                 font-family:Helvetica;
                 font-size:3em;
-                margin:30px;
-                margin-left:535px;
                 position:absolute;
-                color:#8E1300;
+                color:black;
+                margin-top: 30px;
+                margin-left: 20px;
+                text-shadow: 4px 3px 2px rgba(20,20,20,0.1);
+                font-family:Raleway;
             }
 
             .productimg{
-                width:800px;
-                height:240px;
-                margin-top:90px;
-                margin-left:300px;
+                width:500px;
+                height:500px;
+                margin-top:120px;
+                background-color:rgba(240,240,240,0.4);
             }
 
             .detailsword{
                 font-family:Calibri;
                 font-size:2.3em;
-                margin-top:20px;
-                margin-left:380px;
+                margin-top:140px;
+                margin-left: 40px;
+                width:800px;
 
             }
 
@@ -149,23 +156,61 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 text-align:center;
                 margin-top:30px;
                 width:100%;
-                height:100%;
+                
 
             }
 
-            .submitbtn{
-                transition:0.5s linear;
-                border-radius:10px;
-                cursor:pointer;
-                font-size:1.2em;
-                height:35px;
-                width:150px;
-                margin-top: 30px;
+            /* CSS */
+            .submitbtn {
+                background-color: #FFFFFF;
+                border: 1px solid rgb(209,213,219);
+                border-radius: .5rem;
+                box-sizing: border-box;
+                color: #111827;
+                font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+                font-size: .875rem;
+                font-weight: 600;
+                line-height: 1.25rem;
+                padding: .75rem 1rem;
+                text-align: center;
+                text-decoration: none #D1D5DB solid;
+                text-decoration-thickness: auto;
+                box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+                cursor: pointer;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                margin-top: 40px;
+                width:800px;
             }
 
-            .submitbtn:hover{
-                border-radius:25px;
-                box-shadow: #EEEEEE 0px 14px 28px, #EEEEEE 0px 10px 10px;
+            .submitbtn:hover {
+                background-color: rgb(249,250,251);
+            }
+
+            .submitbtn:focus {
+                outline: 2px solid transparent;
+                outline-offset: 2px;
+            }
+
+            .submitbtn:focus-visible {
+                box-shadow: none;
+            }
+
+            .qtyInput{
+                width:800px;
+                margin-left: 40px;
+                display:flex;
+                align-items: left;
+            }
+            .qtyInput b{
+                font-family:Calibri;
+                font-size:2.3em;
+            }
+            .qtyInput input{
+                text-align: center;
+                background-color:rgba(240,240,240,0.4);
+                border:2px solid rgba(200,200,200,0.8);
             }
 
         </style>
@@ -175,7 +220,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
 
         <?php
-        include('header.php');
+        include('../PHP/header.php');
         ?>
 
         <?php
@@ -199,105 +244,79 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         }
         echo"<div class='productdetails'>
         <div class='tknameword'><b id='ticketname'>{$ticketname[$y][$i]}</b></div><br/>
+        
         <img src='../IMAGE/{$imagename[$y][$i]}' class='productimg' id='pdimg'/>
+        <div class='innerContainer'>    
         <div class='detailsword' style='padding:10px;'>
         <div class='cat' style='margin-bottom:25px;' id='catname'><b>Product Categories : </b><span style='margin-left:20px;'> {$catname[$y][$i]}</span></div>
         <div class='price' style='margin-bottom:5px;' ><b>Price<span style='margin-left:213px;'> :</span> </b><span style='margin-left:20px;'>RM {$ticketprice[$y][$i]}</span></div>
-        <div class='details' style='margin-bottom:5px;margin-top:20px;' id='details'><b>Details</b> <br/>&nbsp - {$ticketdetails[$y][$i]} <br/>
+        <div class='details' style='margin-bottom:5px;margin-top:20px;line-height:80px;' id='details'><b>Details :</b> <br/>&nbsp - {$ticketdetails[$y][$i]} <br/>
         </div>
         </div>
         <form action='' method='post' class='submit'>
         <input type='hidden' value='{$productid[$y][$i]}' name='hiddenID' />
-        Date: 
-        <input type='date' id='bookdate' name='bookdate' style='font-size:1.6em;margin-right:30px;'/>
-        Quantity: 
+        <div class='qtyInput'>
+        <b>&nbsp Quantity: &nbsp;</b>
         <input type='number' id='qty' name='qty' value='1' min='1' max='100' style='width:100px;font-size:1.6em;margin-right:30px;'/>
         <br/>
+        </div>
         <button type='submit' onclick='return addtocart()' id='submitbtn' class='submitbtn'>ADD TO CART</button>
         </form>
+        </div>
         </div>";
         $index = $i;
         $catindex = $y;
         ?>
 
         <?php
-        if (isset($_POST["bookdate"])) {
+        if (isset($_POST["qty"])) {
             if ($index >= 0) {
-                
+
 
                 $i = $index;
                 $y = $catindex;
-                $date = $_POST["bookdate"];
                 $hiddenID = $_POST["hiddenID"];
                 $name = $ticketname[$y][$i];
                 $image = $imagename[$y][$i];
                 $price = $ticketprice[$y][$i];
                 $qty = (int) $_POST["qty"];
 
-                echo $hiddenID;
-                echo $date;
-                echo $qty;
-                echo $price;
-                echo "<pre>";
-                print_r($_SESSION);
-                echo "</pre>";
+
                 if (!isset($_SESSION["cart"])) {
                     echo " | no session exist,now created";
                     $_SESSION["cart"] = array();
                 }
-                $newItem  = array(
+                $newItem = array(
                     "hiddenID" => $hiddenID,
                     "Image" => $image,
                     "Name" => $name,
                     "Price" => $price,
-                    "Date" => $date,
                     "Qty" => $qty,
                     "IndexI" => $i,
                     "IndexY" => $y
                 );
-                
+
                 // check if the ticket already exists in the cart
                 $found = false;
 
                 // Loop through existing cart items to check if the same ticket for the same date already exists
                 foreach ($_SESSION["cart"] as $key => $item) {
                     if ($item["hiddenID"] === $newItem["hiddenID"]) {
-                        if($_SESSION["cart"][$key]["Date"] === $newItem["Date"]){
-                            $_SESSION["cart"][$key]["Qty"] += $newItem["Qty"];
-                            $found = true;
-                            break;
-                        }
+                        $_SESSION["cart"][$key]["Qty"] += $newItem["Qty"];
+                        $found = true;
+                        break;
                     }
                 }
                 // If the ticket doesn't exist in the cart, add it as a new item
                 if (!$found) {
                     $_SESSION["cart"][] = $newItem;
                 }
-                echo "<pre>";
-                print_r($_SESSION);
-                echo "</pre>";
- 
+
             }
+            echo "<script>location='../PHP/cart.php'</script>";
         }
         ?>
 
     </body>
-    <script>
-        function addtocart() {
-            var date = document.getElementById("bookdate").value;
-            var qty = document.getElementById("qty").value;
 
-            if (date === "") {
-                event.preventDefault();
-                alert('Please select ticket date !');
-                return false;
-            } else {
-                if (qty > 100) {
-
-                } else {
-                    alert('Done Add to Cart');
-                }
-            }
-        }
-    </script>
 </html>

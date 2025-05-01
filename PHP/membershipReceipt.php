@@ -2,7 +2,7 @@
 session_start();
 
 if (empty($_SESSION["membership"])) {
-    echo "<script>location='memberships.php'</script>";
+    echo "<script>location='../PHP/memberships.php'</script>";
 }
 ?>
 
@@ -143,7 +143,7 @@ if (empty($_SESSION["membership"])) {
         require_once '../secret/helper.php';
         ?>
         <?php
-        include('header.php');
+        include('../PHP/header.php');
         ?>
         <div class="receipt">
             <div class="receipt-navi">
@@ -160,7 +160,7 @@ if (empty($_SESSION["membership"])) {
 
                         // Prepare SQL statement to retrieve payment details with user information
                         $sql = "SELECT  m.user_id, name, date, time
-                                FROM Membership m JOIN Client c ON m.user_id = c.user_id
+                                FROM membership m JOIN Client c ON m.user_id = c.user_id
                                 WHERE membership_id = ?";
                         $stmt = $con->prepare($sql);
                         $stmt->bind_param('s', $membership_id);
@@ -216,7 +216,7 @@ if (empty($_SESSION["membership"])) {
             </div>
 
             <input type="button" class="btnPrint" value="Print"/>
-            <input type="button" class="btnBack" value="Back" onclick="location = 'home.php'"/>
+            <input type="button" class="btnBack" value="Back" onclick="location = '../PHP/home.php'"/>
         </div>
     </body>
 

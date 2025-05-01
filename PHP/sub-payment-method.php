@@ -127,7 +127,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <div class="btn">
                     <input type="submit" value="Proceed" class="btnProceed" />
-                    <input type="button" value="Cancel" class="btnCancel" onclick="location = 'memberships.php'"/>
+                    <input type="button" value="Cancel" class="btnCancel" onclick="location = '../PHP/memberships.php'"/>
                 </div>
             </fieldset>
             <?php
@@ -137,9 +137,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     // Redirect the user based on the selected payment method
                     if ($selectedPaymentMethod == "creditCard") {
-                        echo "<script>location='credit-card.php'</script>";
+                        echo "<script>location='../PHP/credit-card.php'</script>";
                     } elseif ($selectedPaymentMethod == "eWallet") {
-                        echo "<script>location='tng.php'</script>";
+                        echo "<script>location='../PHP/tng.php'</script>";
                     }
                 }
             }

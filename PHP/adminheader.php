@@ -65,19 +65,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
         <div class="adminnavi">
             <div class="organame" >
-                <img src="../IMAGE/adminnavname.png" class="adminnavname"/>
+                <img src="../IMAGE/Wo'eY Logo(Black).png" class="adminnavname" />
 
             </div>
-            <div class="navia" ><a href="adminsearch.php"><b>TRANSACTION</b></a></div>
-            <div class="navia" ><a href="adminappeals&approval.php"><b>APPEALLING</b></a></div>
-            <div class="navia"><a href="adminfeedback.php"><b>FEEDBACK</b></a></div>
-            <div class="navia"><a href="admin-memberships.php"><b>MEMBERSHIPS</b></a></div>
+            <div class="navia" ><a href="../PHP/adminsearch.php"><b>TRANSACTION</b></a></div>
+            <div class="navia"><a href="../PHP/adminfeedback.php"><b>FEEDBACK</b></a></div>
+            <div class="navia"><a href="../PHP/admin-memberships.php"><b>MEMBERSHIPS</b></a></div>
             <div class="navia"><a href="#" onclick="confirmLogout()"><b>LOG OUT</b></a></div>
         </div>
         <script>
             function confirmLogout() {
                 if (confirm("Are you sure you want to log out?")) {
-                    window.location.href = "login.php";
+                    window.location.href = "../PHP/login.php";
                 }
             }
         </script>

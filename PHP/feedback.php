@@ -27,7 +27,7 @@ if (isset($_COOKIE['id'])) {
         if ($stmt->execute()) {
             echo "<script>
                 alert('Thank you for your valuable feedback!');
-                window.location.href='account.php';
+                window.location.href='../PHP/account.php';
                   </script>";
         } else {
             echo "Error: " . $con->error;
@@ -242,12 +242,12 @@ if (isset($_COOKIE['id'])) {
 </head>
 <body>
     <?php 
-    include("header.php"); 
+    include("../PHP/header.php"); 
     ?>
     
     <form method="post" action="" onsubmit="return validateForm()">
         <div class="part1">
-            <h1 class="typing-animation">Wow! Duckyland @ Anaheim, California.</h1>
+            <h1 class="typing-animation">Wo'ey Sdn Bhd | ASIAN SPECIFIC COMPANY </h1>
             <div class="colorpart">
                 <h2><p id="ticket"></p></h2>
                 <h2>We value your feedback.</h2>
@@ -285,7 +285,7 @@ if (isset($_COOKIE['id'])) {
                 <td><input type="radio" name="radio1" value="1" id="r15"></td>
             </tr>
             <tr>
-                <th>How satisfied are you with our facilities? <span style="color:red;">*</span></th>
+                <th>How satisfied are you with our service? <span style="color:red;">*</span></th>
                 <td><input type="radio" name="radio2" value="5" id="r21"></td>
                 <td><input type="radio" name="radio2" value="4" id="r22"></td>
                 <td><input type="radio" name="radio2" value="3" id="r23"></td>
@@ -293,7 +293,7 @@ if (isset($_COOKIE['id'])) {
                 <td><input type="radio" name="radio2" value="1" id="r25"></td>
             </tr>
             <tr>
-                <th>How satisfied are you with our services? <span style="color:red;">*</span></th>
+                <th>How satisfied are you with our delivery? <span style="color:red;">*</span></th>
                 <td><input type="radio" name="radio3" value="5" id="r31"></td>
                 <td><input type="radio" name="radio3" value="4" id="r32"></td>
                 <td><input type="radio" name="radio3" value="3" id="r33"></td>
@@ -313,7 +313,7 @@ if (isset($_COOKIE['id'])) {
      
     <script>
         var part = localStorage.ticket.split(",");
-        document.getElementById("ticket").innerHTML=part[0] + " Ticket";
+        document.getElementById("ticket").innerHTML=part[0] ;
         document.getElementById("hidden1").value=part[0];
         document.getElementById("hidden2").value=part[1];
     

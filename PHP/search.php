@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Default SQL statement
     $sql = "SELECT payment_id, order_id, p.user_id, name, ticket_name, ticket_amount, price, total_price, date, time
-            FROM Payment p JOIN Client c ON p.user_id = c.user_id";
+            FROM payment p JOIN client c ON p.user_id = c.user_id";
 
     // Modify SQL based on the action
     if ($action == 'search' && !empty($_POST['tranId'])) {

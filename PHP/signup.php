@@ -49,7 +49,7 @@ if (isset($_POST['submitbtn']))
         echo "<script>localStorage.username='$username';</script>";
         echo "<script>localStorage.email='$email';</script>";
         echo "<script>localStorage.phone='$phone';</script>";
-        $webvalue = "login.php";
+        $webvalue = "../PHP/login.php";
         $signvalue="All information is valid,click log in to register your account";
         $continue = "Log in";
         $iamge="unknownprofile.jpg";
@@ -128,6 +128,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <title>Sign up</title>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+            *{
+                margin: 0px;
+                padding:0px;
+            }
             .maindiv{
                 width:1200px;
                 height: 650px;
@@ -164,6 +168,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 margin-top: -40px;
                 color: orange;
                 font-size: 3.2em;
+                margin-top: 10px;
+                margin-bottom: 20px;
             }
             .logbtn{
                 width:140px;
@@ -208,6 +214,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 margin-left: 100px;
                 color: white;
                 letter-spacing: 3px;
+                margin-top: 50px;
+                margin-bottom: 30px;
             }
             .name input,.pass input,.phone input{
                 border: none;
@@ -246,7 +254,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
         <?php
-        include('header.php');
+        include('../PHP/header.php');
         ?>
         <div class="maindiv">
             <div class="left">
@@ -254,7 +262,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <h4 class="logtext1">Already have <br>
                         <span style="text-transform: uppercase;font-family: 'Archivo Black', sans-serif;color: orange;font-size: 1.5em;">your own</span>
                     </h4><h1 class="logtexth1">Account?</h1>
-                    <a href="login.php"><button class="logbtn">Log in</button></a>
+                    <a href="../PHP/login.php"><button class="logbtn">Log in</button></a>
 
                 </div>
             </div>

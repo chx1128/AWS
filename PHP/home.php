@@ -51,104 +51,129 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 margin: 0px;
                 font-family:Roboto,monospace;
             }
-
-            .homeabove{
-                width: clamp(600px,1450px,1600px);
-                margin:auto;
-                height: 470px;
-                border: 1px solid transparent;
-                margin-top:0px;
-            }
-
-            .homeabove img{
-                width: clamp(600px,1450px,1600px);
-                margin:auto;
-                height: 430px;
-                padding-top:4px;
-                padding-left:3px;
-                border-radius:15px;
-                -webkit-box-shadow: 0px 31px 300px -60px rgba(148,176,218,1);
-                -moz-box-shadow: 0px 31px 300px -60px rgba(148,176,218,1);
-                box-shadow: 0px 31px 300px -60px rgba(148,176,218,1);
-            }
-
-            .whatsup {
-                width:500px;
-                height:0;
-                margin:auto;
-                margin-top: 80px;
-                font:sans-serif;
-                font-size:4.5em;
-            }
-            .whatsup b{
-                margin-left: -400px;
-            }
-
-            .facility{
-                background-color:#E7E7E7;
-                width: clamp(600px,100%,1550px);
-                height:100%;
-                margin:auto;
-                margin-top:50px;
+            .promotionMssWrapper{
+                width: 100%;
+                max-width:1550px;
+                background-color:black;
+                opacity:0.8;
+                overflow:hidden;
                 display:flex;
-                flex-wrap:wrap;
-                justify-content:space-around;
+                align-items:center;
+                justify-content:center;
+                
             }
-
-            .wrap{
-                width:560px;
-                height:300px;
-                margin-bottom:250px;
-                margin-top:0px;
-                border-radius:25px;
+            
+            .promotionMssList1{
+                display:flex;
+                white-space:nowrap;
+                will-change:transform;
+                animation:marquee 100s linear infinite;
             }
-
-            .facilities{
-                width:560px;
-                height:100%;
-                margin-bottom:10px;
-                margin-right:0px;
-                margin-left:0px;
-                margin-top:80px;
-                border:1px solid transparent;
-                border-radius:25px;
+            
+            .promotionMssList2{
+                display:flex;
+                white-space:nowrap;
+                will-change:transform;
+                animation:marquee2 100s linear infinite;
             }
-
-            .word{
-                display: inline;
-                width:0;
-                height:0;
-                font:Roboto;
-                font-size:1.5em;
+            
+            .promotionMssList1 .promotionMss a{
+                all:unset;
+                cursor:pointer;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                background-color:black;
+                opacity:0.8;
+                width:100%;
+            }
+            
+            .promotionMssList2 .promotionMss a{
+                all:unset;
+                cursor:pointer;
+                
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                
+                background-color:black;
+                opacity:0.8;
+                width:100%;
+            }
+            
+            .promotionMss{
+                margin-right:500px;
+            }
+            
+            .promotionMss p{
+                font-family:"Lucida Console";
+                font-size:14px;
+                
+                opacity:1.0;
+                color:white;
+            }
+            
+            .promotionMss i{
+                margin-left:10px;
+                opacity:1.0;
+                color:white;
+            }
+            
+            @keyframes marquee {
+                0%{transform:translateX(100%)}
+                100%{transform:translateX(-100%)}
+            }
+            @keyframes marquee2 {
+                0%{transform:translateX(200%)}
+                100%{transform:translateX(0%)}
+            }
+            .homeElement{
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                margin-bottom:50px;
+            }
+            .homeImg{
+                width:100%;
+                max-width:1550px;
+                background-color:#0d0907;
+            }
+            
+            .homeImg img{
+                max-width:100%;
+                opacity:0.5;
+            }
+            
+            .homeWord{
+                margin-top:-175px;
+                z-index:100;
+                color:#f8f8f4;
+                font-family:Georgia;
                 text-align: center;
-                flex-wrap:wrap;
-                justify-content:space-around;
             }
-
-
-            .chatbot img{
-                position:fixed;
-                bottom:0px;
-                right:0px;
-                width:100px;
-                height:100px;
-                margin-bottom: 60px;
-                margin-right:48px;
-                z-index:50;
+            .wordTitle{
+                font-size:60px;
             }
-
-            .chatbot img:hover{
-                transform:scale(1.1);
+            
+            .wordDesc{
+                margin-top:0px;
+                font-size:18px;
             }
-
-            .rate{
-                margin-top:10px;
-                margin-left:150px;
-                width:250px;
-                height:40px;
-                border:1px solid transparent;
-
+            
+            .wordBtn{
+                margin-top:7px;
+                border:#f8f8f4 solid 2px;
+                padding:10px;
+                width:180px !important;
             }
+            
+            a {
+                text-decoration:none;
+                color:inherit;
+                font-size:20px;
+            }
+            
 
         
 
@@ -156,77 +181,72 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
 
     <body>
+        
+        <div class="promotionMssWrapper">
+            <div class="promotionMssList1">
+                <div class="promotionMss">
+                    <a href="../ServletShop">
+                        <p>WELCOME TO WO'EY STORE</p>
+                    </a>
+                </div>
+                
+                
+                <div class="promotionMss">
+                    <a href="/GUI/JSP/userSignup.jsp">
+                        <p>FREE SHIPPING FOR NEW SIGN UP USER</p>
+                    </a>
+                </div>
+                
+                
+                <div class="promotionMss">
+                    <a href="../ServletShop">
+                        <p>FREE SHIPPING FOR ORDER ABOVE RM1000</p>
+                    </a>
+                </div>
+            </div>
+            <div class="promotionMssList2">
+                <div class="promotionMss">
+                    <a href="../ServletShop">
+                        <p>WELCOME TO WO'EY STORE</p>
+                    </a>
+                </div>
+                
+                
+                <div class="promotionMss">
+                    <a href="/GUI/JSP/userSignup.jsp">
+                        <p>FREE SHIPPING FOR NEW SIGN UP USER</p>
+                    </a>
+                </div>
+                
+                
+                <div class="promotionMss">
+                    <a href="../ServletShop">
+                        <p>FREE SHIPPING FOR ORDER ABOVE RM1000</p>
+                    </a>
+                </div>
+            </div>
+            </div>
         <?php
-        include('header.php');
+        include('../PHP/header.php');
         ?>
-        
-
-        <div class="homeabove">
-            <img src="../IMAGE/homeabove(1)(1).png"/>
+            <div class="homeElement"> 
+            <div class="homeImg">
+                <img src="../Image/homeImg1.1.jpg" alt=""/>
+            </div>
+            <div class="homeWord">
+                <div class="wordTitle">Wo'oi</div>
+                <div class="wordDesc">Beli Semua!</div>
+                <a href="../ServletShop"><div class="wordBtn">SHOP ALL</div></a>
+            </div>
         </div>
         
-        <div class="whatsup"><b>What's new?</b></div>
-        <div class="facility">
-            <?php
-            for($i=0;$i<$counter;$i++) {
-                if($agerestrict[$i]=='U'){
-                    $ageword[$i]="Underage";
-                    $agecolor="red";
-                }
-                
-                else if($agerestrict[$i]=='O'){
-                    $ageword[$i]="Non-Underage";
-                    $agecolor="yellow";
-                }
-                
-                
-                
-                if($facstatus[$i]=='A'){
-                
-                echo "<div class='wrap'>
-                <img src='../IMAGE/$facimgname[$i]' class='facilities'/>
-                    <div class='word'>
-                        <div class='facilitiesword'><b>$facname[$i]</b></div>
-                    <div class='rate'><b>😱 $scare[$i]  🥰 $happy[$i]</b></div>
-                    <script>changeColor$i();</script>
-                    <div class='agerestrict'><b>Age Restriction: </b><span id='ageword$i' style='color='$agecolor''>$ageword[$i]</span></div>
-                    </div></div>
-                ";
-                
-                }
-                
-                else if($facstatus[$i]=='N'){
-                    //does not display anything
-                }
-            }
-            ?>
-
-
-        </div> 
-
-
-        <div class="chatbot">
-            <img src="../IMAGE/chatbot.png" onclick="baudio.play()" style="cursor:pointer"/>
-            <div class="word" style="
-                 color: #B75151;
-                 position:fixed;
-                 bottom:0px;
-                 right:0px;
-                 width:150px;
-                 height:100px;
-                 margin-bottom: -46px;
-                 margin-right:22px;
-                 z-index:50;
-                 ">
-                <b style="font-family:Fantasy,Calibri;">Click Me!</b></div>
-        </div>
         <script>
             
             const baudio = new Audio();
             baudio.src = "../soundeffect.mp4";
         </script>
         <?php
-        include("footer.php");
+        include("../PHP/footer.php");
         ?>
     </body>
     

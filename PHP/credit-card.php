@@ -14,7 +14,6 @@ if (isset($_POST["btnSubmit2"])) {
             $image = $value["Image"];
             $name = $value["Name"];
             $price = $value["Price"];
-            $date = $value["Date"];
             $qty = $value["Qty"];
                                 
             $subtotalPrice = number_format($price * $qty, 2);
@@ -34,11 +33,11 @@ if (isset($_POST["btnSubmit2"])) {
             $user_id = $_COOKIE['id'];
         }
         else{
-            echo "<script>location='products.php'</script>";
+            echo "<script>location='../PHP/products.php'</script>";
         }
         //fucntion to select the last payment_id from fatabase
         function getLastPaymentID($con) {
-            $sql = "SELECT payment_id FROM Payment ORDER BY payment_id DESC LIMIT 1";
+            $sql = "SELECT payment_id FROM payment ORDER BY payment_id DESC LIMIT 1";
             $result = $con->query($sql);
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
@@ -50,7 +49,7 @@ if (isset($_POST["btnSubmit2"])) {
 
         //fucntion to select the last order_id from fatabase
         function getLastOrderID($con) {
-            $sql = "SELECT order_id FROM Payment ORDER BY order_id DESC LIMIT 1";
+            $sql = "SELECT order_id FROM payment ORDER BY order_id DESC LIMIT 1";
             $result = $con->query($sql);
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
@@ -74,7 +73,7 @@ if (isset($_POST["btnSubmit2"])) {
         $nextONumber = $lastONumber + 1;
         $nextOrderID = 'O' . sprintf('%04d', $nextONumber); // Format with leading zeros
         //Sql statement
-        $sql = "INSERT INTO Payment
+        $sql = "INSERT INTO payment
            (payment_id, order_id, user_id, ticket_name, ticket_amount, book_date, price, total_price, date, time) 
            VALUES (?,?,?,?,?,?,?,?,?,?)";
 
@@ -85,21 +84,20 @@ if (isset($_POST["btnSubmit2"])) {
             // Retrieve relevant details of the item
             $name = $value["Name"];
             $price = $value["Price"];
-            $date = $value["Date"];
             $qty = $value["Qty"];
 
             // Store details in arrays
             $ticketNames[] = $name;
-            $dates[] = $date;
             $quantities[] = $qty;
+            $prices[]=$price;
             $subtotalPrices[] = number_format($price * $qty, 2);
         }
 
         // Combine arrays into single strings separated by '|'
         $combinedNames = implode('|', $ticketNames);
-        $combinedDates = implode('|', $dates);
+        $combinedDates = "-";
         $combinedQuantities = implode('|', $quantities);
-        $combinedSubtotalPrices = implode('|', $subtotalPrices);
+        $combinedSubtotalPrices = implode('|', $prices);
 
         //Pass in parameter into the "?" inside the sql
         $stmt->bind_param('sssssssdss', $nextPaymentID, $nextOrderID, $user_id, $combinedNames, $combinedQuantities, $combinedDates, $combinedSubtotalPrices, $totalPrice, $buyDate, $buyTime);
@@ -120,14 +118,14 @@ if ($stmt->execute()) {
 
         $_SESSION["payment"] = $nextPaymentID;
 
-        echo "<script>location='productReceipt.php'</script>";
+        echo "<script>location='../PHP/productReceipt.php'</script>";
     } else {
 
         $con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         //fucntion to select the last membership_id from fatabase
         function getLastMembershipID($con) {
-            $sql = "SELECT membership_id FROM Membership ORDER BY membership_id DESC LIMIT 1";
+            $sql = "SELECT membership_id FROM membership ORDER BY membership_id DESC LIMIT 1";
             $result = $con->query($sql);
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
@@ -163,7 +161,7 @@ if ($stmt->execute()) {
         $payment = "200";
 
         //Sql statement
-        $sql = "INSERT INTO Membership
+        $sql = "INSERT INTO membership
            (membership_id, user_id, date_join, date_exp, total_payment, date, time) 
            VALUES (?,?,?,?,?,?,?)";
 
@@ -183,7 +181,7 @@ if ($stmt->execute()) {
 
         $_SESSION["membership"] = $nextMembershipID;
 
-        echo "<script>location='membershipReceipt.php'</script>";
+        echo "<script>location='../PHP/membershipReceipt.php'</script>";
     }
 }
 ?>
@@ -293,7 +291,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
         <?php 
-        include('header.php');
+        include('../PHP/header.php');
         ?>
         <form id="paymentForm" action="" method="post">
             <h1>Credit/Debit Card</h1>
@@ -361,9 +359,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     function cancelPayment() {
         <?php
             if (isset($_SESSION["cart"]) && !empty($_SESSION["cart"])) {
-                echo "location.href='payment-method.php';";
+                echo "location.href='../PHP/payment-method.php';";
             } else {
-                echo "location.href='sub-payment-method.php';";
+                echo "location.href='../PHP/sub-payment-method.php';";
             }
         ?>
     }

@@ -6,10 +6,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 <?php
 // Replace these with your RDS details
-define("DB_HOST", "assignment-db.czoaapz4bsjn.us-east-1.rds.amazonaws.com");
-define("DB_USER", "assignment");
-define("DB_PASS", "assignment-password");
-define("DB_NAME", "assignment");  
+define("DB_HOST","localhost");
+define("DB_USER","root");
+define("DB_PASS","");
+define("DB_NAME","assign"); 
 
 
 //function to check exist name
