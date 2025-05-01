@@ -1,5 +1,6 @@
 <?php
 require_once ("../secret/helper.php");
+setcookie('id', '', time() - 3600, '/');
 //if (isset($_COOKIE['count'])) {
 // $count=$_COOKIE['count'];
 //echo $count;
@@ -143,7 +144,7 @@ if (isset($_POST["logbtn"])) {
             echo "<script>location='products.php'</script>";
         }
         else{
-            echo "<script>location='adminselection.php'</script>";
+            echo "<script>location='adminsearch.php'</script>";
         }
     }
 } else {
@@ -171,7 +172,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 margin:auto;
                 border:2px solid black;
                 display:flex;
-                margin-top:50px;
+                margin-top:30px;
                 overflow:hidden;
                 box-shadow: 30px 24px 282px 49px rgba(0,0,0,0.24);
             }
@@ -331,6 +332,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </style>
     </head>
     <body>
+        <?php
+        include('header.php');
+        ?>
         <div class="maindiv">
             <div class="left">
                 <img src="../IMAGE/rollercoaster.jpg" class="leftimage"/>

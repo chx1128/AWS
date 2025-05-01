@@ -2,13 +2,24 @@
 session_start();
 require_once '../secret/helper.php';
 
-if (isset($_POST["btnSubmit"])) {
-    if (isset($_SESSION["cart"]) && !empty($_SESSION["cart"])) {
+if (isset($_POST["btnSubmit2"])) {
+    if (isset($_SESSION["checkout"]) && !empty($_SESSION["checkout"])) {
         $ticketNames = [];
         $quantities = [];
         $subtotalPrices = [];
-
-        $totalPrice = isset($_SESSION["totalPrice"]) ? number_format($_SESSION["totalPrice"], 2) : '0.00';
+        
+        $totalPrice  =0;
+        foreach ($_SESSION["checkout"] as $value) {
+            // Retrieve relevant details of the item
+            $image = $value["Image"];
+            $name = $value["Name"];
+            $price = $value["Price"];
+            $date = $value["Date"];
+            $qty = $value["Qty"];
+                                
+            $subtotalPrice = number_format($price * $qty, 2);
+            $totalPrice += $subtotalPrice;
+        }
 
         //Set the time zone to Malaysia
         date_default_timezone_set('Asia/Kuala_Lumpur');
@@ -21,6 +32,9 @@ if (isset($_POST["btnSubmit"])) {
 
         if (isset($_COOKIE['id'])) {
             $user_id = $_COOKIE['id'];
+        }
+        else{
+            echo "<script>location='products.php'</script>";
         }
         //fucntion to select the last payment_id from fatabase
         function getLastPaymentID($con) {
@@ -67,7 +81,7 @@ if (isset($_POST["btnSubmit"])) {
         //Process sql
         $stmt = $con->prepare($sql);
 
-        foreach ($_SESSION["cart"] as $value) {
+        foreach ($_SESSION["checkout"] as $value) {
             // Retrieve relevant details of the item
             $name = $value["Name"];
             $price = $value["Price"];
@@ -90,8 +104,12 @@ if (isset($_POST["btnSubmit"])) {
         //Pass in parameter into the "?" inside the sql
         $stmt->bind_param('sssssssdss', $nextPaymentID, $nextOrderID, $user_id, $combinedNames, $combinedQuantities, $combinedDates, $combinedSubtotalPrices, $totalPrice, $buyDate, $buyTime);
 
-        //Run sql -> insert record into DB
-        $stmt->execute();
+if ($stmt->execute()) {
+    echo "Payment recorded successfully!";
+} else {
+    echo "Error: " . $stmt->error;
+}
+        
 
         $stmt->close();
         $con->close();
@@ -307,7 +325,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
 
             <div class="btn">   
-                <input type="submit" value="Confirm" name="btnSubmit" class="btnSubmit"/>
+                <input type="submit" value="Confirm" name="btnSubmit2" class="btnSubmit"/>
                 <input type="button" value="Cancel" name="btnCancel" class="btnCancel" onclick="cancelPayment();"/>
             </div>
         </form>

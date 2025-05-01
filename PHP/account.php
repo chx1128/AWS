@@ -40,16 +40,22 @@ if ($resultacc->num_rows > 0) {
 ?>
 <?php
 if (isset($_POST['logout'])) {
-    echo "<script>
-    if(confirm('Are you sure you want to log out $id ?')) {
-     window.location.href = 'login.php';
-     document.cookie = 'id=; path=/;';} 
-      
-   else {
-          window.location.href = 'account.php';
-          }
-          </script>";
+    session_id("Guest");
+    session_start();
+    unset($_SESSION["cart"]);
+    unset($_SESSION["checkout"]);
+
+    // Expire the cookie (if you use it for session_id)
+    setcookie('id', '', time() - 3600, '/');
+
+    // Destroy session completely (optional)
+    session_destroy();
+
+    // Redirect to login page
+    header("Location: login.php");
+    exit;
 }
+
 ?>
 <!DOCTYPE html>
 <!--
@@ -406,8 +412,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </form>
                     <h3>Account create date : </h3><span style="margin-left:0px;" id="createdate"><?php echo $userregisDate; ?></span>
                     <a href="editprofile.php" style="margin-left:300px;margin-top: 30px;position:absolute;">Edit profile</a>
-                    <form action="" method="post">  
-                        <button type="submit" class="extrabutton" name="logout" value="logout">Log Out</button>
+                    <form method="post" id="logoutForm">
+                        <input type="hidden" name="logout" value="1">
+                        <button type="button" class="extrabutton" name="logout" value="logout" onclick="confirmLogout()">Logout</button>
                     </form>
                 </div>
 
@@ -631,6 +638,11 @@ echo "</div>";
 
     </body>
     <script>
+        function confirmLogout() {
+    if (confirm("Are you sure you want to log out?")) {
+        document.getElementById('logoutForm').submit();
+    }
+}
         function comment(category,id) {
             localStorage.ticket = category;
             location = "feedback.php";

@@ -1,8 +1,22 @@
 <?php
 session_start();
 
-unset($_SESSION["cart"]);
-session_destroy();
+
+foreach ($_SESSION['checkout'] as $checkoutItem) {
+    foreach ($_SESSION['cart'] as $index => $cartItem) {
+        $checkoutID = $checkoutItem['hiddenID'] . $checkoutItem['Date'];
+        $cartID = $cartItem['hiddenID'] . $cartItem['Date'];
+
+        if ($checkoutID === $cartID) {
+            unset($_SESSION['cart'][$index]);
+        }
+    }
+}
+
+// Reindex cart array to avoid gaps
+$_SESSION['cart'] = array_values($_SESSION['cart']);
+unset($_SESSION["checkout"]);
+
 if (empty($_SESSION["payment"])) {
     echo "<script>location='products.php'</script>";
 }

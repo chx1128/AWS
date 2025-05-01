@@ -1,9 +1,34 @@
 <?php
 session_start();
 
-if (empty($_SESSION["cart"])) {
+if (isset($_POST['checkedItems'])) {
+    if (isset($_COOKIE['id'])) {
+            $user_id = $_COOKIE['id'];
+        }
+        else{
+            echo "<script>location='login.php'</script>";
+        }
+    $checked = $_POST['checkedItems']; // Array of checkboxID values
+    $checkout = [];
+
+    foreach ($_SESSION['cart'] as $item) {
+        $itemID = $item['hiddenID'] . $item['Date'];
+        if (in_array($itemID, $checked)) {
+            $checkout[] = $item;
+        }
+    }
+
+    $_SESSION['checkout'] = $checkout;
+
+    // Optional: Debug output
+    echo "<pre>";
+    print_r($_SESSION['checkout']);
+    echo "</pre>";
+} else {
+    if(!isset($_POST['btnProceed']))
     echo "<script>location='products.php'</script>";
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -152,7 +177,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <img src="../IMAGE/tng.jpg" alt="TnG"/>
                 </div>
                 <div class="btn">
-                    <input type="submit" value="Proceed" class="btnProceed" />
+                    <input type="submit" value="Proceed" class="btnProceed" name="btnProceed"/>
                     <input type="button" value="Cancel" class="btnCancel" onclick="location = 'products.php'"/>
                 </div>
             </fieldset>
@@ -185,19 +210,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </tr>
                         <?php
                         // Check if the cart session variable is set and not empty
-                        if (isset($_SESSION["cart"])) {
+                        if (isset($_SESSION["checkout"])) {
                             // Loop through each item in the cart
-                            $totalPrice = isset($_SESSION["totalPrice"]) ? number_format($_SESSION["totalPrice"], 2) : '0.00';
+                            $totalPrice  =0;
 
-                            foreach ($_SESSION["cart"] as $value) {
+                            foreach ($_SESSION["checkout"] as $value) {
                                 // Retrieve relevant details of the item
                                 $image = $value["Image"];
                                 $name = $value["Name"];
                                 $price = $value["Price"];
                                 $date = $value["Date"];
                                 $qty = $value["Qty"];
-
+                                
                                 $subtotalPrice = number_format($price * $qty, 2);
+                                $totalPrice += $subtotalPrice;
 
                                 echo "
                                     <tr>

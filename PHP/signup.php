@@ -134,7 +134,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 margin:auto;
                 border:1px solid black;
                 display:flex;
-                margin-top:50px;
+                margin-top:30px;
                 overflow: hidden;
                 box-shadow: 30px 24px 282px 49px rgba(0,0,0,0.24);
             }
@@ -245,6 +245,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </style>
     </head>
     <body>
+        <?php
+        include('header.php');
+        ?>
         <div class="maindiv">
             <div class="left">
                 <div class="leftcontent">

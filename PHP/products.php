@@ -174,7 +174,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 margin-top: 2%;
                 transition: transform 0.5s ease;
             }
-
+            html{
+                max-width: 1550px;
+                margin:auto;
+            }
             .categories{
                 width:1100px;
                 height:50px;
@@ -190,7 +193,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
             .ticket{
                 background-color:white;
-                width:1000px;
+                width:1100px;
                 height:100%;
                 display:flex;
                 flex-wrap: wrap;
@@ -199,7 +202,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 margin:auto;
                 margin-top: 20px;
                 margin-bottom: 200px;
-                margin-left:250px;
                 transition: transform 0.5s ease;
                 font-family:Helvetica,monospace;
             }
@@ -209,7 +211,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 height:225px;
                 margin-bottom:0px;
                 margin-right:0px;
-                margin-left:-120px;
                 margin-top:-10px;
                 border:1px solid transparent;
                 border-radius:25px;
@@ -275,7 +276,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
             .cart{
                 position:absolute;
                 margin-top:10px;
-                margin-left:-20px;
+                margin-left:100px;
                 width:50px;
                 height:50px;
                 padding:10px;
@@ -286,98 +287,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 filter:drop-shadow(#868686 0 0 0.75em);
             }
 
-            .cartTab{
-                width: 20%;
-                background-color:#00032E;
-                color: white;
-                inset: 90px -20% 0 auto;
-                position: fixed;
-                display: grid;
-                grid-template-rows: auto 1fr auto;
-                transition: 0.5s;
-                z-index:100;
-            }
-
-            .moveLeftCart{
-                transform: translateX(-302px);
-            }
-
-            .moveLeft {
-                transform: translateX(-150px);
-            }
-
-
-            .cartTab h1{
-                background-color: darkblue;
-                padding-left: 20px;
-                font-weight: bold;
-                font-family: sans-serif;
-            }
-
-            .listCart{
-                overflow: auto;
-                padding: 20px;
-            }
-
-            .listCart .cart-details{
-                font-weight: bold;
-                color: #87CEFA;
-                width: 100%;
-            }
-
-            .listCart img{
-                width: 100%;
-                height: auto;
-                padding-top: 5%;
-            }
-
-            .deleteCartItem{
-                background-color: #A00000;
-                color: white;
-                border: none;
-                font-size: 1em;
-                font-weight: bold;
-                border-radius: 5px;
-                float: right;
-                cursor: pointer;
-                height: 30px;
-            }
-
-            .deleteCartItem:hover{
-                background-color: darkred;
-            }
-
-            .totalPrice{
-                padding: 10px;
-                font-size: 20px;
-                font-weight: bold;
-            }
-
-            .cartTab .btn{
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .cartTab .btn .checkOut{
-                background-color: yellow;
-                border: none;
-                font-size: 1em;
-                font-weight: bold;
-                cursor: pointer;
-                height: 30px;
-            }
-
-            .cartTab .btn .close{
-                background-color: white;
-                border: none;
-                font-size: 1em;
-                font-weight: bold;
-                cursor: pointer;
-                height: 30px;
-            }
+           
         </style>
     </head>
-    <body class="showcart">
+    <body>
         <?php
         include('header.php');
         ?>
@@ -515,77 +428,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
             <img src="../IMAGE/shopping-cart.png" class="cart" onclick="toadd()" id="toadd"/>
         </div>
 
-        <form action="payment-method.php" method="POST">
-            <div class="cartTab">
-                <h1>Shopping Cart</h1>
-                <div class="listCart">
-                    <?php
-                    // Check if the cart session variable is set and not empty
-                    if (isset($_SESSION["cart"])) {
-                        // Loop through each item in the cart
-                        foreach ($_SESSION["cart"] as $value) {
-                            // Retrieve relevant details of the item
-                            $image = $value["Image"];
-                            $name = $value["Name"];
-                            $price = $value["Price"];
-                            $date = $value["Date"];
-                            $qty = $value["Qty"];
-
-                            // Display the item details
-                            printf("
-                            <img src='../IMAGE/$image'/><br>
-                        <div class='cart-details'>
-                            Ticket: <span style='color:white;'>$name<br></span>
-                            Date: <span style='color:white;'>$date</span><br>
-                            Price: <span style='color:white;'>RM $price</span><br>
-                            Quantity: <span style='color:white;'>$qty</span>
-                            <a href='products.php?deleteCartItemName=%s&deleteCartItemDate=%s'>
-                                <input type='button' name='deleteCartItem' class='deleteCartItem'
-                                value='Delete'/>
-                            </a>
-                        </div>", $name, $date);
-                        }
-                    } else {
-                        
-                    }
-                    ?>
-                </div>
-
-                <div class="totalPrice">
-                    TOTAL PRICE : RM 
-                    <?php echo isset($_SESSION["totalPrice"]) ? number_format($_SESSION["totalPrice"], 2) : '0.00'; ?>
-                </div>
-
-                <div class="btn">
-                    <input type="button" value="Close" name="btnClose" class="close" />
-                    <input type="submit" value="Check Out" name="btncheck" class="checkOut" />
-                </div>
-            </div>
-        </form>
+        
         <?php
         include("footer.php");
         ?>
     </body>
 
-
-
-
-    <script>
-        $(document).ready(function () {
-            $(".addtocart").click(function () {
-                $(".cartTab").toggleClass("moveLeftCart");
-                $(".ticket").toggleClass("moveLeft");
-                $(".addtocart").toggleClass("moveLeft");
-                $(".chatbot").toggle();
-            });
-
-            $(".close").click(function () {
-                $(".cartTab").removeClass("moveLeftCart");
-                $(".ticket").removeClass("moveLeft");
-                $(".addtocart").removeClass("moveLeft");
-                $(".chatbot").show();
-            });
-        });
-    </script>
 
 </html>

@@ -62,7 +62,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
         .naviahold{
             display:flex;
-            margin-left: 330px;
+            width:850px;
+            margin-left: 270px;
         }
         
         .navia a:hover {
@@ -106,6 +107,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="naviahold">
             <div class="navia" ><a href="home.php"><i class="fa-solid fa-house" style="position:absolute;font-size:0.8em;margin-left:-30px;margin-top:3.5px;opacity:75%;"></i>Home</a></div>
             <div class="navia" style="margin-left:2px;"><a href="products.php"><i class="fa-solid fa-ticket" style="position:absolute;font-size:0.8em;margin-left:-32px;margin-top:3.5px;opacity:75%;"></i>Products</a></div>
+            <div class="navia" style="margin-left:2px;"><a href="cart.php"><i class="fa-solid fa-cart-shopping" style="position:absolute;font-size:0.8em;margin-left:-32px;margin-top:3.5px;opacity:75%;"></i>Cart</a></div>
             <div class="navia" style="margin-left:7px;"><a href="account.php"><i class="fa-solid fa-circle-user" style="position:absolute;font-size:0.8em;margin-left:-27px;margin-top:3.5px;opacity:75%;"></i>Account</a></div>
             <div class="navia" style="margin-left:32px;"><a href="memberships.php"><i class="fa-solid fa-gift" style="position:absolute;font-size:0.8em;margin-left:-28px;margin-top:3.5px;opacity:75%;"></i>Memberships</a></div>
             </div>

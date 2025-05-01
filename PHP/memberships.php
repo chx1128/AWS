@@ -1,15 +1,13 @@
-<?php
-echo "<script>
-      if (localStorage.verify =='1') {
-//     nothing happen;
-}else{location='login.php'}
-      </script>";
 
-?>
 <?php
 require_once '../secret/helper.php';
 if (isset($_COOKIE['id'])) {
     $user_id = $_COOKIE['id'];
+}else{
+    echo "<script>
+                    alert('Please login first');
+                    location='home.php'
+                  </script>";
 }
 
 function checkSameMembershipID($user_id) {

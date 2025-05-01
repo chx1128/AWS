@@ -1,22 +1,26 @@
 <?php
-if (isset($_COOKIE['id'])) {
-    $id=$_COOKIE['id'];
-    //echo"$id";
+// MUST be the very first thing in the file — no output above this
+
+if (isset($_COOKIE['id']) && $_COOKIE['id'] !== '') {
+    $id = $_COOKIE['id'];
+} else {
+    $id = "Guest";
 }
-else{
-$id="";
-}
-if (!isset($_GET["submitbtn"])) {
-    echo "<script>location='products.php'</script>";
-}
+
+// Set session ID BEFORE starting the session
 session_id($id);
 session_start();
-global $i;
+
+// Check if redirected from a submit
+if (!isset($_GET["submitbtn"])) {
+    echo "<script>location='products.php'</script>";
+    exit;
+}
+
+// Define global vars
+global $i, $count, $ticketcat, $y;
 $i = 0;
-global $count;
 $count = 0;
-global $ticketcat;
-global $y;
 $y = 0;
 ?>
 <!--SA Details page-->
@@ -219,6 +223,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
         if (isset($_POST["bookdate"])) {
             if ($index >= 0) {
+                
+
                 $i = $index;
                 $y = $catindex;
                 $date = $_POST["bookdate"];
@@ -226,42 +232,51 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 $name = $ticketname[$y][$i];
                 $image = $imagename[$y][$i];
                 $price = $ticketprice[$y][$i];
-                $qty = $_POST["qty"];
+                $qty = (int) $_POST["qty"];
+
                 echo $hiddenID;
+                echo $date;
+                echo $qty;
+                echo $price;
+                echo "<pre>";
+                print_r($_SESSION);
+                echo "</pre>";
+                if (!isset($_SESSION["cart"])) {
+                    echo " | no session exist,now created";
+                    $_SESSION["cart"] = array();
+                }
+                $newItem  = array(
+                    "hiddenID" => $hiddenID,
+                    "Image" => $image,
+                    "Name" => $name,
+                    "Price" => $price,
+                    "Date" => $date,
+                    "Qty" => $qty,
+                    "IndexI" => $i,
+                    "IndexY" => $y
+                );
+                
                 // check if the ticket already exists in the cart
-                $ticketExists = false;
+                $found = false;
 
                 // Loop through existing cart items to check if the same ticket for the same date already exists
-                foreach ($_SESSION["cart"] as &$item){
-                    if ($item["Name"] == $name && $item["Date"] == $date) {
-                        // If the same ticket for the same date already exists, increase the quantity by 1
-                        $item["Qty"] += $qty;
-                        $ticketExists = true;
-                        echo "<script>location='products.php'</script>";
+                foreach ($_SESSION["cart"] as $key => $item) {
+                    if ($item["hiddenID"] === $newItem["hiddenID"]) {
+                        if($_SESSION["cart"][$key]["Date"] === $newItem["Date"]){
+                            $_SESSION["cart"][$key]["Qty"] += $newItem["Qty"];
+                            $found = true;
+                            break;
+                        }
                     }
                 }
-
                 // If the ticket doesn't exist in the cart, add it as a new item
-                if (!$ticketExists) {
-                    $cartItem = array(
-                        "hiddenID" =>$hiddenID,
-                        "Image" => $image,
-                        "Name" => $name,
-                        "Price" => $price,
-                        "Date" => $date,
-                        "Qty" => $qty,
-                        "IndexI" => $i,
-                        "IndexY" => $y
-                    );
-
-                    if (!isset($_SESSION["cart"])) {
-                        $_SESSION["cart"] = array();
-                    }
-
-                    $_SESSION["cart"][] = $cartItem;
-                    
-                    echo "<script>window.location='products.php'</script>";
+                if (!$found) {
+                    $_SESSION["cart"][] = $newItem;
                 }
+                echo "<pre>";
+                print_r($_SESSION);
+                echo "</pre>";
+ 
             }
         }
         ?>
