@@ -150,7 +150,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             
             .homeWord{
                 margin-top:-175px;
-                z-index:100;
+                z-index:1;
                 color:#f8f8f4;
                 font-family:Georgia;
                 text-align: center;
