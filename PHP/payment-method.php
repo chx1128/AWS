@@ -198,7 +198,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="cart-items">
                     <table>
                         <tr>
-                            <th>Ticket</th>
+                            <th>Product</th>
                             <th>Quantity</th>
                             <th>Price (RM)</th>
                             <th>Sub-total Price (RM)</th>

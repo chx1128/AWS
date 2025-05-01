@@ -175,7 +175,7 @@ if (empty($_SESSION["payment"])) {
         ?>
         <div class="receipt">
             <div class="receipt-navi">
-                <img src="../IMAGE/2ndduckylogo.png" class="receipt-logo"/>
+                <img src="../IMAGE/Wo'eY Logo(White).png" class="receipt-logo"/>
             </div>
             <h2>Payment Receipt</h2>
             <div class="customer-info">
@@ -230,7 +230,7 @@ if (empty($_SESSION["payment"])) {
             <div class="receipt-content">
                 <table class="itemDetail">
                     <tr>
-                        <th>Ticket Name</th>
+                        <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Price (RM)</th>
                         <th>Total (RM)</th>

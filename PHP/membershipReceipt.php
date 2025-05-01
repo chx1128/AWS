@@ -147,7 +147,7 @@ if (empty($_SESSION["membership"])) {
         ?>
         <div class="receipt">
             <div class="receipt-navi">
-                <img src="../IMAGE/2ndduckylogo.png" class="receipt-logo"/>
+                <img src="../IMAGE/Wo'eY Logo(White).png" class="receipt-logo"/>
             </div>
             <h2>Payment Receipt</h2>
             <div class="customer-info">
@@ -206,10 +206,10 @@ if (empty($_SESSION["membership"])) {
             <div class="receipt-content">
                 <table class="itemDetail">
                     <h3>Subscription</h3>
-                    <p>
-                        - 🚗Free Parking <br/>  
-                        - ️🎫Buy 5 Get 1 Free <br/>
-                        - 🛣️Fast Lane Entrance <br/>
+                     <p>
+                        - Product discount notification <br/>  
+                        - ️Get annual mystery gift <br/>
+                        - Faster delivery with no extra charged<br/>
                     </p>
                     <div class="price">Total Price: RM 200.00</div>
                 </table>

@@ -247,7 +247,7 @@ if (isset($_COOKIE['id'])) {
     
     <form method="post" action="" onsubmit="return validateForm()">
         <div class="part1">
-            <h1 class="typing-animation">Wo'ey Sdn Bhd | ASIAN SPECIFIC COMPANY </h1>
+            <h1 class="typing-animation">Wo'ey Sdn Bhd | MALAYSIAN GRADUATION APPAREL </h1>
             <div class="colorpart">
                 <h2><p id="ticket"></p></h2>
                 <h2>We value your feedback.</h2>

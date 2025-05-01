@@ -46,10 +46,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <title>HOME PAGE</title>
 
         <style>
-            
             *{
                 margin: 0px;
                 font-family:Roboto,monospace;
+            }
+            html{
+                width:1550px;
+                margin:auto;
             }
             .promotionMssWrapper{
                 width: 100%;
