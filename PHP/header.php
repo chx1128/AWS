@@ -101,7 +101,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
         <div class="navi">
             <div class="organame">
-                <img src="../IMAGE/Wo'eY Logo(White).png" class="duckylogo" style="width:220px;height:60px;margin-top: 15px;"/>
+                <img src="https://tarumtbucket2305835.s3.amazonaws.com/Wo'eY Logo(White).png" class="duckylogo" style="width:220px;height:60px;margin-top: 15px;"/>
                 
             </div>
             <div class="naviahold">
@@ -116,7 +116,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
 <!--              for duck icon on the bottom     -->
                 <div class="chatbot">
-            <img src="../IMAGE/chatbot.png" onclick="baudio.play()" style="cursor:pointer"/>
+            <img src="https://tarumtbucket2305835.s3.amazonaws.com/chatbot.png" onclick="baudio.play()" style="cursor:pointer"/>
             <div class="word" style="
                  color: #B75151;
                  position:fixed;

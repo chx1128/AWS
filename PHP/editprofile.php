@@ -250,7 +250,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             }
             ?>
             <div class="container1">
-                <img src="<?php echo "../uploads/$showimg";   ?>" class="container1img" id="container1img"/>
+                <img src="<?php echo "https://tarumtbucket2305835.s3.amazonaws.com/$showimg";   ?>" class="container1img" id="container1img"/>
             </div>
             <?php
             if (isset($_POST["updatebtn"])) {
@@ -284,13 +284,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             $err = 'Only JPG,GIF, and PNG format are allowed';
                         } else {
                             $save_as = uniqid(). $id .'.'. $ext;
-                            $filePaths = glob("../uploads/*{$id}.{png,jpg,jpeg,gif}", GLOB_BRACE);
+                            $filePaths = glob("https://tarumtbucket2305835.s3.amazonaws.com/*{$id}.{png,jpg,jpeg,gif}", GLOB_BRACE);
                             if (!empty($filePaths)) {
                                 $basename = pathinfo($filePaths[0], PATHINFO_BASENAME);
                                 //echo "<script>alert('$basename');</script>";
                                 unlink($filePaths[0]);
                             }
-                            move_uploaded_file($file['tmp_name'], '../uploads/' . $save_as);
+                            move_uploaded_file($file['tmp_name'], 'https://tarumtbucket2305835.s3.amazonaws.com/' . $save_as);
                            $sqlimg="update client set personal_img = ? where user_id='$id'";
                            $stmtimg=$con->prepare($sqlimg);
                            $stmtimg->bind_param('s', $save_as);

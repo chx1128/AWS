@@ -147,7 +147,7 @@ if (empty($_SESSION["membership"])) {
         ?>
         <div class="receipt">
             <div class="receipt-navi">
-                <img src="../IMAGE/Wo'eY Logo(White).png" class="receipt-logo"/>
+                <img src="https://tarumtbucket2305835.s3.amazonaws.com/Wo'eY Logo(White).png" class="receipt-logo"/>
             </div>
             <h2>Payment Receipt</h2>
             <div class="customer-info">

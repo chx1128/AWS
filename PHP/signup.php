@@ -149,7 +149,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             .left{
                 width:380px;
                 height:650px;
-                background-image: url(../IMAGE/leftbackground.png);
+                background-image: url(https://tarumtbucket2305835.s3.amazonaws.com/leftbackground.png);
             }
             .leftcontent{
                 margin-top:100px;
@@ -267,7 +267,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
             <div class="right"></div>
-            <img src="../IMAGE/skyworld.webp" class="rightbackground" />
+            <img src="https://tarumtbucket2305835.s3.amazonaws.com/skyworld.webp" class="rightbackground" />
             
             <form action="<?php echo $webvalue ?>" method="post" class="rightform" id="signupForm">
                 <div class="signtitle"><h2 >- SIGN UP -</h2></div>

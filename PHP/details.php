@@ -245,7 +245,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         echo"<div class='productdetails'>
         <div class='tknameword'><b id='ticketname'>{$ticketname[$y][$i]}</b></div><br/>
         
-        <img src='../IMAGE/{$imagename[$y][$i]}' class='productimg' id='pdimg'/>
+        <img src='https://tarumtbucket2305835.s3.amazonaws.com/{$imagename[$y][$i]}' class='productimg' id='pdimg'/>
         <div class='innerContainer'>    
         <div class='detailsword' style='padding:10px;'>
         <div class='cat' style='margin-bottom:25px;' id='catname'><b>Product Categories : </b><span style='margin-left:20px;'> {$catname[$y][$i]}</span></div>

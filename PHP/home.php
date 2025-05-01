@@ -234,7 +234,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         ?>
             <div class="homeElement"> 
             <div class="homeImg">
-                <img src="../Image/homeImg1.1.jpg" alt=""/>
+                <img src="https://tarumtbucket2305835.s3.amazonaws.com/homeImg1.1.jpg" alt=""/>
             </div>
             <div class="homeWord">
                 <div class="wordTitle">Wo'oi</div>

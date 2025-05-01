@@ -191,7 +191,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo "<div class='feedbox' id='feedbox".$row['feedback_id']."'>
             <div class='userimg'>
-            <img class='insideimg' src='../uploads/".$row['personal_img']."'/></div>
+            <img class='insideimg' src='https://tarumtbucket2305835.s3.amazonaws.com/".$row['personal_img']."'/></div>
             <div class='user'>" . $row['name'] . "</div>
             <div class='starcontainer'>";
                 for ($j = 1; $j <= $row['star_rating']; $j++) {

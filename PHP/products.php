@@ -297,7 +297,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 if ($ticketstatus1[$x] == 'A') {
                     echo"<div class='ticketwrap' id='ticketwrap$x'>
             <form action='../PHP/details.php' method='get'>
-            <img src='../IMAGE/$imagename1[$x]' class='ticketclass' alt='Product details'/>
+            <img src='https://tarumtbucket2305835.s3.amazonaws.com/$imagename1[$x]' class='ticketclass' alt='Product details'/>
             <div class='word'>
             <div class='wordclass'><b>$ticketname1[$x]</b></div>
             <div class='ticketprice' style='margin-top:3px;'>RM $ticketprice1[$x]</div>
@@ -337,7 +337,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 if ($ticketstatus2[$x] == 'A') {
                     echo"<div class='ticketwrap'>
             <form action='../PHP/details.php' method='get'>
-            <img src='../IMAGE/$imagename2[$x]' class='ticketclass' alt='Product details'/>
+            <img src='https://tarumtbucket2305835.s3.amazonaws.com/$imagename2[$x]' class='ticketclass' alt='Product details'/>
             <div class='word'>
             <div class='wordclass'><b>$ticketname2[$x]</b></div>
             <div class='ticketprice' style='margin-top:3px;'>RM $ticketprice2[$x]</div>
@@ -378,7 +378,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 if ($ticketstatus3[$x] == 'A') {
                     echo"<div class='ticketwrap'>
             <form action='../PHP/details.php' method='get'>
-            <img src='../IMAGE/$imagename3[$x]' class='ticketclass' alt='Product details'/>
+            <img src='https://tarumtbucket2305835.s3.amazonaws.com/$imagename3[$x]' class='ticketclass' alt='Product details'/>
             <div class='word'>
             <div class='wordclass'><b>$ticketname3[$x]</b></div>
             <div class='ticketprice' style='margin-top:3px;'>RM $ticketprice3[$x]</div>
