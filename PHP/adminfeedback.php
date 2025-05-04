@@ -151,7 +151,7 @@ $separator = implode(" | ", $filter);
             .satisfaction {
                 width: 900px;
                 margin-top: 10px;
-                margin-left: 80px;
+                margin-left: 40px;
                 font-size: 12px;
             }
             .tname{

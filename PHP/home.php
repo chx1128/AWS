@@ -239,7 +239,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="homeWord">
                 <div class="wordTitle">Wo'oi</div>
                 <div class="wordDesc">Beli Semua!</div>
-                <a href="../ServletShop"><div class="wordBtn">SHOP ALL</div></a>
+                <a href="../PHP/product.php"><div class="wordBtn">SHOP ALL</div></a>
             </div>
         </div>
         

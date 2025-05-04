@@ -43,7 +43,7 @@ function checkSameUserIDMembership($user_id) {
 
     $users_id = $con->real_escape_string($user_id);
 
-    $sql = "SELECT * FROM Membership WHERE user_id = '$users_id'";
+    $sql = "SELECT * FROM membership WHERE user_id = '$users_id'";
 
     if ($result = $con->query($sql)) {
         if ($result->num_rows > 0) {
@@ -75,7 +75,7 @@ function checkExistUserIDClient($user_id) {
     $users_id = $con->real_escape_string($user_id);
 
     // SQL query to check for existence of user ID in the Client table
-    $sql = "SELECT user_id FROM Client WHERE user_id = '$users_id'";
+    $sql = "SELECT user_id FROM client WHERE user_id = '$users_id'";
 
     // Execute the query
     $result = $con->query($sql);

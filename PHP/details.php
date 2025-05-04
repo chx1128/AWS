@@ -115,6 +115,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <meta charset="UTF-8">
         <title></title>
         <style>
+            *{
+                margin:0px;
+                padding:0px;
+            }
             html{
                 height:100vh;
             }
@@ -236,11 +240,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         }
 
         if ($catname[$y][$i] == "PA") {
-            $catname[$y][$i] = "Package Access";
+            $catname[$y][$i] = "Graduation Jacket";
         } else if ($catname[$y][$i] == "SA") {
-            $catname[$y][$i] = "Spot Access";
+            $catname[$y][$i] = "Graduation Shorts";
         } else if ($catname[$y][$i] == "IA") {
-            $catname[$y][$i] = "Individual Access";
+            $catname[$y][$i] = "Graduation Tee";
         }
         echo"<div class='productdetails'>
         <div class='tknameword'><b id='ticketname'>{$ticketname[$y][$i]}</b></div><br/>
@@ -250,7 +254,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <div class='detailsword' style='padding:10px;'>
         <div class='cat' style='margin-bottom:25px;' id='catname'><b>Product Categories : </b><span style='margin-left:20px;'> {$catname[$y][$i]}</span></div>
         <div class='price' style='margin-bottom:5px;' ><b>Price<span style='margin-left:213px;'> :</span> </b><span style='margin-left:20px;'>RM {$ticketprice[$y][$i]}</span></div>
-        <div class='details' style='margin-bottom:5px;margin-top:20px;line-height:80px;' id='details'><b>Details :</b> <br/>&nbsp - {$ticketdetails[$y][$i]} <br/>
+        <div class='details' style='margin-bottom:5px;margin-top:20px;line-height:80px;' id='details'><b>Description :</b> <br/>&nbsp - {$ticketdetails[$y][$i]} <br/>
         </div>
         </div>
         <form action='' method='post' class='submit'>

@@ -28,7 +28,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             body {
                 font-family: Arial, sans-serif;
             }
-
+            html{
+                max-width:1550px;
+                margin:auto;
+            }
             .error, .info
             {
                 width: 50%;
@@ -494,7 +497,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     $payment = trim($_POST["payment"]);
 
                     //Validation
-                    $error["userId"] = checkUserID($user_id);
+                    $error["userId"] = checkExistUserIDClient($user_id)?null:"ID not found";
 
                     //remove null value
                     $error = array_filter($error);

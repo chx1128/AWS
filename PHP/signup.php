@@ -10,7 +10,7 @@ $emailerror="";
 $phoneerror="";
 $passerror="";
 $cfmpasserror="";
-if (isset($_POST['submitbtn'])) 
+if (isset($_POST['submitbtn']))
 {
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -19,8 +19,23 @@ if (isset($_POST['submitbtn']))
     $cfmpass = $_POST['secondpass'];
     $image = "unknownprofile.jpg";
 
+    $con = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+        //check connection
+        if ($con->connect_error) {
+            die("connection failed: " .$con->connect_error);
+        }
+        //write query
+        $checkEmailSql = "SELECT user_email FROM client WHERE user_email = ?";
+        $emailCheckStmt = $con->prepare($checkEmailSql);
+        $emailCheckStmt->bind_param("s", $email);
+        $emailCheckStmt->execute();
+        $emailCheckStmt->store_result();
     if (empty($_POST['email'])) {
         $emailerror = "Email is <b>Required</b>";
+    }
+    else if ($emailCheckStmt->num_rows > 0) {
+        // Email already exists
+        $emailerror = "Error: Email already registered.";
     }
     if (empty($_POST['username'])) {
         $usernameerror = "Username is <b>Required</b>";
@@ -28,7 +43,7 @@ if (isset($_POST['submitbtn']))
         $usernameerror = "Username <b>must more than 3 character</b>";
     } else if (strlen($username) > 30) {
         $usernameerror = "Username <b>cannot more than 30 character</b>";
-    } else if (!preg_match("/^[0-9a-zA-z ]+$/", $username)) {
+    } else if (!preg_match("/^[0-9a-zA-Z ]+$/", $username)) {
         $usernameerror = "<b>Only</b> number,space and character allow";
     }if (empty($_POST['phone'])) {
         $phoneerror = "Phone number is <b>required</b>";
@@ -46,22 +61,7 @@ if (isset($_POST['submitbtn']))
         $cfmpasserror = "<b>Password dint match</b>";
     }
     //connect database
-        $con = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
-        //check connection
-        if ($con->connect_error) {
-            die("connection failed: " .$con->connect_error);
-        }
-        //write query
-        $checkEmailSql = "SELECT user_email FROM client WHERE user_email = ?";
-        $emailCheckStmt = $con->prepare($checkEmailSql);
-        $emailCheckStmt->bind_param("s", $email);
-        $emailCheckStmt->execute();
-        $emailCheckStmt->store_result();
-
-        if ($emailCheckStmt->num_rows > 0) {
-            // Email already exists
-            $emailerror = "Error: Email already registered.";
-        } else {
+        if ($usernameerror == "" && $emailerror == "" && $phoneerror == "" && $passerror == "" && $cfmpasserror == ""){
             // Step 2: Generate new user_id
             $sql3 = "SELECT user_id FROM client ORDER BY CAST(SUBSTRING(user_id, 2) AS UNSIGNED) DESC LIMIT 1;";
             $result = mysqli_query($con, $sql3);
@@ -75,8 +75,8 @@ if (isset($_POST['submitbtn']))
                 $nextUserId = "U0001";
             }
 
-            // Step 3: Insert new user
-            $sql = "INSERT INTO client (user_id, name, user_email, user_pass, phone, personal_img, register_date) 
+           // Step 3: Insert new user
+            $sql = "INSERT INTO client (user_id, name, user_email, user_pass, phone, personal_img, register_date)
                     VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stmt = $con->prepare($sql);
 
@@ -100,7 +100,7 @@ if (isset($_POST['submitbtn']))
         $signvalue="All information is valid,click log in to register your account";
         $continue = "Log in";
         $image="unknownprofile.jpg";
-        
+
     }
 } else {
     $webvalue = "";

@@ -23,13 +23,9 @@ $header = array(
         body {
             font-family: sans-serif;
         }
-        #searchBox {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 1px solid lightgray;
-            border-radius: 10px;
-            box-shadow: 0 0 10px lightgray;
+        html{
+            max-width:1550px;
+            margin:auto;
         }
         h1 {
             text-align: center;
@@ -97,18 +93,6 @@ $header = array(
     include('../PHP/adminheader.php');
     require_once '../secret/helper.php';
     ?>
-    <div id="searchBox">
-        <h1>Search Customer Transaction History</h1>
-        <form action="javascript:void(0);" method="POST" id="form">
-            Transaction ID :
-            <input type="text" id="tranId" name="tranId" maxlength="5" placeholder="Enter Transaction ID" autofocus
-                   pattern="[Pp]\d{4}" title="Please enter a valid Transaction ID" oninput="validateInput()">
-            <div class="btn">
-                <input type="button" value="Search" name="btnSearch" class="btnSearch" id="btnSearch" onclick="searchRecords()" disabled/>
-                <input type="button" value="Show All" name="btnShowAll" class="btnShowAll" id="btnShowAll" onclick="showAllRecords()"/>
-            </div>
-        </form>
-    </div>
 
     <h2>Transaction History</h2>
     <table border="1" cellspacing="0" cellpadding="5">
