@@ -6,6 +6,7 @@ $counter=0;
 global $facstatus;
 global $agecolor;
 ?>
+
 <!--Retrieve data from DATABASE-->
 <?php
 require_once("../secret/helper.php");
