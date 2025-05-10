@@ -7,6 +7,9 @@ $id = "";
  $cprice[0] = ""; 
  $paymentID[0] = "";
 ?>
+
+
+
 <?php
 if (empty($_COOKIE['id'])) {
     echo "<script>location='../PHP/login.php';</script>";
